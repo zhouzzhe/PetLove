@@ -1,0 +1,153 @@
+body {
+  margin-top: 200px;
+}
+
+/* 商品圖 */
+* {
+  box-sizing: border-box;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+  img {
+    width: 80%;
+  }
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: #ff6144;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.next {
+  right: 160px;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: #ffcb4887;
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 13.4%;
+}
+
+.demo {
+  opacity: 0.6;
+  margin-top: 20px;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+/* 商品圖 */
+
+.box1 {
+  margin: 50px;
+}
+
+.itemSelect {
+  p {
+    margin: 20px;
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  .price1 {
+    margin-top: 0px;
+    white-space: nowrap;
+  }
+
+  .btn1 {
+    width: 70px;
+    height: 40px;
+    border: 2px solid #ff6144;
+    border-radius: 20px;
+    background-color: #ffffff;
+    margin: 10px;
+  }
+
+  .btn2 {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ff6144;
+    border-radius: 20px;
+    background-color: #ffffff;
+    margin: 0 30px;
+  }
+
+  .btn3 {
+    width: 150px;
+    height: 100px;
+    border: 2px solid #ffffff;
+    border-radius: 30px;
+    background-color: #ff6144;
+    color: #000000;
+    margin-left: 10%;
+
+    white-space: nowrap;
+  }
+
+  .btn1:hover,
+  .btn2:hover {
+    background-color: #ff6144;
+    color: white;
+  }
+
+  .btn3:hover {
+    background-color: #ffcb48;
+    color: white;
+    border: 2px solid #000000;
+  }
+}
+
+.section2 {
+  margin: 100px 0;
+  padding-top: 80px;
+  border-top: 3px solid #ff6144;
+  flex-direction: column;
+
+  img {
+    margin-top: 30px;
+    width: 80%;
+  }
+}
