@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AdoptPage2</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="./CSS/AdoptPage2.css">
+</head>
+
+<body>
+  <!-- 置入navbar.html -->
+  <div id="navbar"></div>
+  <script>
+    fetch("navbar.html")
+      .then((response) => response.text())
+      .then((data) => {
+        document.getElementById("navbar").innerHTML = data;
+      });
+  </script>
+  <a href="" class="backPage">
+    <img src="./img/arrow.png" class="mx-5" alt="回上一頁">
+  </a>
+  <div class="d-flex col-12">
+    <div class="petPic col-8 ">
+      <img src="../保母領養頁面照片/南瓜.jpg" alt="">
+    </div>
+    <div>
+      <div class="col-4 mt-5">
+        <p>虎斑</p>
+        <p>男生</p>
+        <p>2個月大</p>
+        <p>已打疫苗</p>
+        <p>已除蟲</p>
+        <p>目前狀況適合領養</p>
+      </div>
+      <div class="willingness">
+        <button>我有意願領養</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
