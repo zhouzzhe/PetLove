@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        img {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <% data.forEach(function(product) { %>
+        <div class="product">
+            <h2>
+                <%= product.product_name %>
+            </h2>
+            <img src="<%= product.product_img %>" alt="<%= product.product_name %>">
+            <p>分類: <%= product.category %>
+            </p>
+            <p>庫存: <%= product.product_stock %>
+            </p>
+            <h3>介紹</h3>
+            <p>
+                <%= product.introduction %>
+            </p>
+
+            <h3>規格與價格</h3>
+            <ul>
+                <% product.spec_list.split(',').forEach(function(spec) { %>
+                    <li>
+                        <%= spec %>
+                    </li>
+                    <% }); %>
+            </ul>
+        </div>
+        <% }); %>
+
+            <!-- <div class="container text-center">
+        <div class="row row-cols-2 row-cols-lg-4">
+            <div class="col" id="test1">
+                <div><a href="http://www.google.com.tw" target="_blank" class="text-dark" id="producttitle">
+                        <div id="cloth1"><img src= class="img-fluid"></div>
+                        <h5>黑色變形蟲短版小可愛</h5>
+                    </a>
+                    <span>S M L</span>
+                    <p>NT.230</p>
+                </div>
+            </div>
+            <div class="col" id="test1">
+                <div><a href="./product.html" target="_blank" class="text-dark" id="producttitle">
+                        <div id="cloth2"><img src= class="img-fluid"></div>
+                        <h5>美式塗鴉寬鬆短袖T恤</h5>
+                    </a>
+                    <span>S M L</span>
+                    <p>NT.480</p>
+                </div>
+            </div>
+            <div class="col" id="test1">
+                <div><a href="http://www.google.com.tw" target="_blank" class="text-dark" id="producttitle">
+                        <div id="cloth3"><img src="./img/cloth/woman/3-1.jpg" class="img-fluid"></div>
+                        <h5>不規則設計灰色露肚長袖T恤</h5>
+                    </a>
+                    <span>S M L</span>
+                    <p>NT.189</p>
+                </div>
+            </div> -->
+</body>
+<script>
+    console.log(product.product_img);
+
+</script>
+
+</html>
