@@ -11,11 +11,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style.css" />
     <style>
-      div > .btn {
+      div > #finishedbtn,
+      div > #inProgressbtn {
         background-color: #ff6144;
         margin-top: 10px;
       }
-      div > .btn:hover {
+      div > #finishedbtn:hover,
+      div > #inProgressbtn:hover {
         background-color: #ff6144;
         border: 1px solid #a52a2a;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -47,7 +49,7 @@
       <nav class="col-md-2" aria-label="Left Sidebar">
         <div class="userInfo">
           <img src="./img/大頭照.png" alt="載入失敗" class="circle-image" />
-          <span>愛遛狗的小姐姐</span>
+          <span class="btn">愛遛狗小姐姐</span>
         </div>
         <div class="aside-list">
           <a href="./member-history.html">
@@ -88,7 +90,12 @@
                   <ul>
                     <li>
                       <a href="./member-userinfo.html" class="btn"
-                        >更改會員資料</a
+                        >更改基本資料</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./member-userinfo.html" class="btn"
+                        >更改工作設定</a
                       >
                     </li>
                     <li>
@@ -110,6 +117,9 @@
             </div>
           </div>
           <!-- accoedion end -->
+          <a href="./member-joinus.html">
+            <span>加入我們</span>
+          </a>
           <a>
             <span style="color: #a52a2a">登出</span>
           </a>
@@ -143,7 +153,7 @@
                 <h6 class="card-title">狀態</h6>
                 <p class="card-text" id="requestStatus">已預約</p>
               </div>
-              <a href="" class="chatdots">
+              <a href="./member-contactNanny.html" class="chatdots">
                 <i class="bi bi-chat-dots"></i>
                 <p id="contactBtn1">聯絡保姆</p>
               </a>
@@ -182,7 +192,7 @@
                 <h6 class="card-title">狀態</h6>
                 <p class="card-text" id="FrequestStatus">已預約</p>
               </div>
-              <a href="" class="chatdots">
+              <a href="./member-contactNanny.html" class="chatdots">
                 <i class="bi bi-chat-dots"></i>
                 <p id="contactBtn2">聯絡保姆</p>
               </a>
@@ -191,7 +201,13 @@
         </div>
         <!-- 已完成訂單查詢按鈕 -->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button class="btn" type="button" id="finishedbtn">查詢更多</button>
+          <a
+            href="./member-orderscore.html"
+            class="btn"
+            type="button"
+            id="finishedbtn"
+            >查詢更多</a
+          >
         </div>
       </main>
     </div>

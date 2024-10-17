@@ -35,11 +35,11 @@
         font-size: 1.5rem;
         vertical-align: top; /* 將星星垂直對齊到頂部 */
       }
-      div > .btn {
+      div > #finishedbtn {
         background-color: #ff6144;
         margin-top: 10px;
       }
-      div > .btn:hover {
+      div > #finishedbtn:hover {
         background-color: #ff6144;
         border: 1px solid #a52a2a;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -61,7 +61,7 @@
       <nav class="col-md-2" aria-label="Left Sidebar">
         <div class="userInfo">
           <img src="./img/大頭照.png" alt="載入失敗" class="circle-image" />
-          <span>愛遛狗的小姐姐</span>
+          <span class="btn">愛遛狗小姐姐</span>
         </div>
         <div class="aside-list">
           <a href="./member-history.html">
@@ -102,7 +102,12 @@
                   <ul>
                     <li>
                       <a href="./member-userinfo.html" class="btn"
-                        >更改會員資料</a
+                        >更改基本資料</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./member-userinfo.html" class="btn"
+                        >更改工作設定</a
                       >
                     </li>
                     <li>
@@ -124,6 +129,9 @@
             </div>
           </div>
           <!-- accordion end -->
+          <a href="./member-joinus.html">
+            <span>加入我們</span>
+          </a>
           <a>
             <span style="color: #a52a2a">登出</span>
           </a>
@@ -149,7 +157,9 @@
                 <td>13:00</td>
                 <td>2</td>
                 <td class="text-center">
-                  <i class="bi bi-chat-dots chat-icon"></i>
+                  <a href="./member-contactGuest.html"
+                    ><i class="bi bi-chat-dots chat-icon"></i
+                  ></a>
                 </td>
               </tr>
             </tbody>
@@ -231,7 +241,13 @@
           </table>
           <!-- 已完成訂單查詢按鈕 -->
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn" type="button" id="finishedbtn">查詢更多</button>
+            <a
+              href="./member-orderscore.html"
+              class="btn"
+              type="button"
+              id="finishedbtn"
+              >查詢更多</a
+            >
           </div>
         </div>
       </main>
