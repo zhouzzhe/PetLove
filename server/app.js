@@ -10,6 +10,7 @@ var shop = require("./router/shop.js");
 var member = require("./router/member.js");
 var adopt = require("./router/adopt.js");
 var cart = require("./router/cart.js");
+var walking = require('./router/walking.js')
 
 app.use(cors());
 // 解析json資料
@@ -25,6 +26,7 @@ app.use("/shop", shop);
 app.use("/member", member);
 app.use("/adopt", adopt);
 app.use("/cart", cart);
+app.use("/walking", walking);
 
 app.listen(8000, function () {
   console.log("成功" + new Date().toLocaleTimeString());

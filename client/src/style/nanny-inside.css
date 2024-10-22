@@ -1,0 +1,53 @@
+.myhover:hover {
+  opacity: 0.6;
+}
+
+.smallImg {
+  img {
+    width: 100%;
+    object-fit: scale-down;
+  }
+}
+
+.introSelf {
+  border: 2px solid #ff6144;
+  border-radius: 30px;
+  width: 80%;
+  height: auto;
+  text-align: center;
+}
+
+.card {
+  border: none;
+}
+
+.btn {
+  .btn1 {
+    width: 150px;
+    height: 90px;
+    border: 2px solid #ff6144;
+    border-radius: 30px;
+    background-color: white;
+    color: #ff6144;
+    margin-left: 10%;
+
+    white-space: nowrap;
+  }
+
+  .btn1:hover {
+    background-color: #ff6144;
+    color: white;
+  }
+
+  .btn2 {
+    width: 150px;
+    height: 90px;
+    border: 2px solid #ffffff;
+    border-radius: 30px;
+    background-color: #ff6144;
+    color: #ffffff;
+    margin-left: 10%;
+
+    white-space: nowrap;
+  }
+}

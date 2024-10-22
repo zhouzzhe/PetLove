@@ -1,0 +1,18 @@
+body {
+  margin-top: 200px;
+
+  .successText {
+    font-size: 28px;
+  }
+
+  .successImg {
+    width: 300px;
+    height: 300px;
+    margin: 40px 0;
+    border-radius: 50%;
+  }
+
+  .successText:last-child {
+    font-size: 16px;
+  }
+}

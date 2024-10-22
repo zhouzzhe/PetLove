@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>更改工作設定</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .nav-link.active-tab {
+        background-color: #ff6144 !important;
+        color: white !important;
+      }
+      div > .table {
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      div.scroll-container {
+        background-color: #a52a2a;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+      }
+
+      div.scroll-container img {
+        padding: 10px;
+        width: 30%;
+        border-radius: 5px;
+        transition: transform 0.3s;
+      }
+
+      div.scroll-container img:hover {
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 置入navbar -->
+    <div id="navbar"></div>
+    <script>
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+    </script>
+    <!-- 置入sidebar -->
+    <div class="wrapper row">
+      <nav class="col-md-2" aria-label="Left Sidebar">
+        <div class="userInfo">
+          <img src="./img/大頭照.png" alt="載入失敗" class="circle-image" />
+          <span class="btn" id="userName">愛遛狗小姐姐</span>
+        </div>
+        <div class="aside-list">
+          <a href="./member-history.html"><span>商品訂單記錄</span></a>
+          <a href="./member-Request.html"><span>我的請求</span></a>
+          <a href="./member-mission.html"><span>工作清單</span></a>
+          <a href="./member-adoption.html"><span>貓狗領養管理</span></a>
+          <div class="accordion accordion-flush" id="userInformation">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseInfo"
+                  aria-expanded="false"
+                  aria-controls="collapseInfo"
+                  id="accordion-btn"
+                >
+                  會員資料
+                </button>
+              </h2>
+              <div
+                id="collapseInfo"
+                class="accordion-collapse collapse"
+                aria-labelledby="heading"
+                data-bs-parent="#userInformation"
+              >
+                <div class="accordion-body">
+                  <ul>
+                    <li>
+                      <a href="./member-userinfo.html" class="btn"
+                        >更改基本資料</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./member-userpage.html" class="btn"
+                        >更改工作設定</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./member-password.html" class="btn">密碼設定</a>
+                    </li>
+                    <li>
+                      <a href="./member-payment.html" class="btn"
+                        >付款方式管理</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./member-logistic.html" class="btn"
+                        >常用收件地址</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="./member-joinus.html"><span>加入我們</span></a>
+          <a><span style="color: #a52a2a">登出</span></a>
+        </div>
+      </nav>
+      <main class="col-md-10">
+        <div>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="user-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#user-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="user-tab-pane"
+                aria-selected="true"
+              >
+                基本資料
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="work-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#work-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="work-tab-pane"
+                aria-selected="false"
+              >
+                工作設定
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="user-tab-pane"
+              role="tabpanel"
+              aria-labelledby="user-tab"
+              tabindex="0"
+            >
+              <table class="table" style="margin-top: 20px">
+                <tbody>
+                  <tr>
+                    <td
+                      style="
+                        background-color: #ffcb48;
+                        width: 100px;
+                        border-radius: 25px 0 0 0;
+                        text-align: center;
+                      "
+                    >
+                      姓名
+                    </td>
+                    <td id="userName">愛遛狗小姊姊</td>
+                  </tr>
+                  <tr>
+                    <td
+                      style="
+                        background-color: #ffcb48;
+                        width: 100px;
+                        text-align: center;
+                      "
+                    >
+                      電話
+                    </td>
+                    <td id="userPhone">09</td>
+                  </tr>
+                  <tr>
+                    <td
+                      style="
+                        background-color: #ffcb48;
+                        width: 100px;
+                        border-radius: 0 0 0 25px;
+                        text-align: center;
+                      "
+                    >
+                      Email
+                    </td>
+                    <td id="userEmail">123@gmail</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- 工作設定 -->
+            <div
+              class="tab-pane fade"
+              id="work-tab-pane"
+              role="tabpanel"
+              aria-labelledby="work-tab"
+              tabindex="0"
+            >
+              <br />
+              <!-- 服務內容 -->
+              <div class="card">
+                <div class="card-header" style="background-color: #ffcb48">
+                  自我介紹
+                </div>
+                <div class="card-body">
+                  <p class="card-text" id="selfIntro"></p>
+                </div>
+              </div>
+              <br />
+              <!-- 可服務時間和地區 -->
+              <table class="table" style="border-radius: 10px">
+                <thead>
+                  <tr>
+                    <th scope="col" style="background-color: #ffcb48">
+                      可接受寵物
+                    </th>
+                    <th scope="col" style="background-color: #ffcb48">
+                      可服務時間
+                    </th>
+                    <th scope="col" style="background-color: #ffcb48">
+                      可服務地區
+                    </th>
+                    <th scope="col" style="background-color: #ffcb48">
+                      可接受體型
+                    </th>
+                    <th scope="col" style="background-color: #ffcb48">
+                      所在地區
+                    </th>
+                    <th scope="col" style="background-color: #ffcb48">價格</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>犬</td>
+                    <td>一,三,五</td>
+                    <td>南屯區,太平區</td>
+                    <td>五公斤以下</td>
+                    <td>台中市南屯區公益路</td>
+                    <td>TWD 300/ 次</td>
+                  </tr>
+                </tbody>
+              </table>
+              <br />
+              <!-- slide -->
+              <h6>照片專區</h6>
+              <div class="scroll-container">
+                <img src="./img/girl with dog.jpg" alt="" />
+                <img src="./img/girl with dog.jpg" alt="" />
+                <img src="./img/girl with dog.jpg" alt="" />
+                <img src="./img/girl with dog.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+          <br />
+        </div>
+      </main>
+    </div>
+    <!-- 置入footer -->
+    <div id="footer"></div>
+    <script>
+      fetch("Footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const tabs = document.querySelectorAll(".nav-link");
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", function () {
+            tabs.forEach((t) => t.classList.remove("active-tab"));
+            this.classList.add("active-tab");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

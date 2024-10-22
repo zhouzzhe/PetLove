@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>會員中心</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      .image-container {
+        position: relative;
+        height: 300px;
+        overflow: visible;
+      }
+
+      .inline-img {
+        position: absolute;
+        height: 150px;
+        width: auto;
+        z-index: 10;
+        animation-duration: 2s;
+      }
+
+      .bottom-left {
+        bottom: 100px;
+        left: -55px;
+      }
+
+      /* test */
+      .marquee-container {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+      }
+
+      .marquee-content {
+        display: inline-block;
+        white-space: nowrap;
+        animation: marquee 10s linear infinite;
+        margin-right: 30px;
+      }
+
+      .marquee-content2 {
+        display: inline-block;
+        white-space: nowrap;
+        animation: marquee2 10s linear infinite;
+        margin-right: 30px;
+      }
+      .marquee-content3 {
+        display: inline-block;
+        white-space: nowrap;
+        animation: marquee2 10s linear infinite;
+        margin-right: 30px;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      @keyframes marquee2 {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+      @keyframes marquee3 {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 置入navbar -->
+    <div id="navbar"></div>
+    <script>
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+    </script>
+    <!-- 置入sidebar -->
+    <div class="wrapper row">
+      <nav class="col-md-2" aria-label="Left Sidebar">
+        <div class="userInfo">
+          <img src="./img/大頭照.png" alt="載入失敗" class="circle-image" />
+          <span class="btn" id="userName">愛遛狗小姐姐</span>
+        </div>
+        <div class="aside-list">
+          <a href="./member-history.html"><span>商品訂單記錄</span></a>
+          <a href="./member-Request.html"><span>我的請求</span></a>
+          <a href="./member-mission.html"><span>工作清單</span></a>
+          <a href="./member-adoption.html"><span>貓狗領養管理</span></a>
+          <a href="./member-joinus.html"><span>加入我們</span></a>
+          <a><span style="color: #a52a2a">登出</span></a>
+        </div>
+      </nav>
+      <main class="col-md-10" style="position: relative">
+        <div>
+          <div class="marquee-container">
+            <div class="marquee-content">
+              <i class="bi bi-exclamation-circle"></i>
+              您的帳號控制台裡，您可以檢視近期的訂單，管理您的收貨地址 和
+              工作清單和更改密碼或修改帳號資料。
+            </div>
+            <div class="marquee-content">
+              <i class="bi bi-exclamation-circle"></i>
+              您的帳號控制台裡，您可以檢視近期的訂單，管理您的收貨地址 和
+              工作清單和更改密碼或修改帳號資料。
+            </div>
+            <div class="marquee-content">
+              <i class="bi bi-exclamation-circle"></i>
+              您的帳號控制台裡，您可以檢視近期的訂單，管理您的收貨地址 和
+              工作清單和更改密碼或修改帳號資料。
+            </div>
+          </div>
+          <div class="image-container" id="imageContainer"></div>
+        </div>
+      </main>
+    </div>
+    <!-- 置入footer -->
+    <div id="footer"></div>
+    <script>
+      fetch("Footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+
+      const images = [
+        {
+          src: "../PetLove/svg/greeting.svg",
+          alt: "greeting Icon",
+          className:
+            "inline-img animate__animated animate__fadeInUp bottom-left",
+        },
+      ];
+
+      images.forEach((image) => {
+        const imgElement = document.createElement("img");
+        imgElement.src = image.src;
+        imgElement.alt = image.alt;
+        imgElement.className = image.className;
+
+        document.getElementById("imageContainer").appendChild(imgElement);
+      });
+    </script>
+  </body>
+</html>

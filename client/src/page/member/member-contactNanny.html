@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>聯絡頁面</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      div > .card {
+        border: 1px solid #ffcb48;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-left: 20px;
+      }
+
+      div > .card-header {
+        background-color: #ffcb48;
+        color: #fff;
+        display: flex;
+        align-items: center;
+      }
+
+      .list-group-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .list-group-item > span {
+        margin-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 置入navbar -->
+    <div id="navbar"></div>
+    <script>
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+    </script>
+    <!-- 上一頁功能 -->
+    <div class="btn" style="height: 30px; width: 30px; margin-bottom: 25px">
+      <i class="bi bi-arrow-left me-2 btn"></i>
+    </div>
+    <!-- contact頁 -->
+    <div>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <img src="./img/girl with dog.jpg" alt="" class="circle-image" />
+              <span id="nannyName">保姆名字</span>
+            </div>
+            <div class="card-body">
+              <h6 class="card-text">訂單資訊</h6>
+              <hr />
+              <!-- 訂單資訊 -->
+              <ul class="list-group">
+                <li class="list-group-item">
+                  1.日期與時間 <span id="orderDate">2024</span>
+                </li>
+                <li class="list-group-item">
+                  2.服務時間(30分鐘一節) <span id="orderTime">30min</span>
+                </li>
+                <li class="list-group-item">
+                  3.頻率 <span id="orderFrequency">一天一次</span>
+                </li>
+                <li class="list-group-item">
+                  4.所需天數 <span id="neededDay">2天</span>
+                </li>
+                <li class="list-group-item">
+                  5.地點 <span id="orderLocation">台中市南屯區</span>
+                </li>
+                <li class="list-group-item">
+                  其他要求(選填) <span id="otherDemand">散步喝水</span>
+                </li>
+                <li class="list-group-item" id="orderNumber">訂單編號#789</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- 這裡是留言板 -->
+        <div class="col">
+          <div class="container mt-5">
+            <form id="messageForm">
+              <div class="form-group">
+                <label for="message">留言:</label>
+                <textarea class="form-control" id="message" required></textarea>
+              </div>
+              <br />
+              <button type="submit" class="btn btn-primary">提交留言</button>
+            </form>
+            <hr />
+            <ul id="messageList" class="list-group"></ul>
+          </div>
+
+          <script>
+            $(document).ready(function () {
+              // 加載留言
+              loadMessages();
+
+              // 提交留言
+              $("#messageForm").on("submit", function (e) {
+                e.preventDefault();
+                const message = $("#message").val();
+
+                $.post("/api/messages", { message }, function () {
+                  $("#message").val("");
+                  loadMessages();
+                });
+              });
+            });
+
+            function loadMessages() {
+              $.get("/api/messages", function (messages) {
+                $("#messageList").empty();
+                messages.forEach((msg) => {
+                  $("#messageList").append(
+                    `<li class="list-group-item"><strong>${msg.username}:</strong> ${msg.message}</li>`
+                  );
+                });
+              });
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <!-- 置入footer -->
+    <div id="footer"></div>
+    <script>
+      fetch("Footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

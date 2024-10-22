@@ -21,7 +21,7 @@ class FAQFrom extends Component {
                 申請日期
               </label>
               <select className="form-select" aria-label="Default select example">
-                <option selected>yyyy-mm-dd</option>
+                <option>yyyy-mm-dd</option>
                 <option defaultValue="1">One</option>
                 <option defaultValue="2">Two</option>
                 <option defaultValue="3">Three</option>

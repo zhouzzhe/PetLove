@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { Outlet } from "react-router-dom";
 import axios from "axios";
 
 class FAQMain extends Component {
@@ -128,9 +127,9 @@ class FAQMain extends Component {
 
           <div className="d-flex justify-content-center m-5 fs-3 align-items-center">
             <div className="text-danger">還有其他疑問嗎？歡迎</div>
-            <button className="btn btn-danger ms-3 fs-3 rounded-pill p-3">
+            <a href="/faq/form" className="btn btn-danger ms-3 fs-3 rounded-pill p-3">
               聯絡我們
-            </button>
+            </a>
           </div>
         </div>
       </React.Fragment>
