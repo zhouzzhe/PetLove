@@ -231,7 +231,7 @@ div > .btn-management {
   border-radius: 15px;
 }
 
-#jionpageBtn {
+#joinpageBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -280,4 +280,25 @@ div > .btn-management {
 #modalbtn:hover {
   background-color: #ff6144;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#logobg {
+  margin-top: 20%;
+  max-width: 100%;
+  height: 200px;
+  opacity: 0.5;
+}
+
+#logobg2 {
+  margin-top: -50px;
+  margin-left: 50px;
+  max-width: 100%;
+  height: 200px;
+  opacity: 0.5;
+}
+
+#logocontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

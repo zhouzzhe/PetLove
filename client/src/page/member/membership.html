@@ -15,23 +15,53 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
     <style>
+      /* 動畫定位 */
       .image-container {
         position: relative;
         height: 300px;
         overflow: visible;
       }
 
-      .inline-img {
-        position: absolute;
-        height: 150px;
+      .bottom-right {
+        position: fixed;
+        height: 100px;
         width: auto;
+        animation-duration: 3s;
+        bottom: 10px;
+        right: 20px;
         z-index: 10;
-        animation-duration: 2s;
       }
 
-      .bottom-left {
-        bottom: 100px;
-        left: -55px;
+      .bottom-right1 {
+        position: fixed;
+        height: 100px;
+        width: auto;
+        animation-duration: 4s;
+        bottom: 10px;
+        right: 1px;
+        z-index: 5;
+      }
+
+      .left-top {
+        position: absolute;
+        height: 100px;
+        width: auto;
+        top: -150%;
+        left: -3%;
+        opacity: 0;
+        animation: slideInDown 3s forwards;
+        animation-delay: 1s;
+      }
+
+      @keyframes slideInDown {
+        0% {
+          transform: translateY(-100%);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
       }
 
       /* test */
@@ -44,20 +74,20 @@
       .marquee-content {
         display: inline-block;
         white-space: nowrap;
-        animation: marquee 10s linear infinite;
+        animation: marquee 20s linear infinite;
         margin-right: 30px;
       }
 
       .marquee-content2 {
         display: inline-block;
         white-space: nowrap;
-        animation: marquee2 10s linear infinite;
+        animation: marquee2 20s linear infinite;
         margin-right: 30px;
       }
       .marquee-content3 {
         display: inline-block;
         white-space: nowrap;
-        animation: marquee2 10s linear infinite;
+        animation: marquee2 20s linear infinite;
         margin-right: 30px;
       }
 
@@ -100,16 +130,77 @@
     </script>
     <!-- 置入sidebar -->
     <div class="wrapper row">
-      <nav class="col-md-2" aria-label="Left Sidebar">
+      <!-- test -->
+      <nav
+        class="col-md-2 animate__animated animate__fadeInLeft"
+        aria-label="Left Sidebar"
+      >
         <div class="userInfo">
           <img src="./img/大頭照.png" alt="載入失敗" class="circle-image" />
-          <span class="btn" id="userName">愛遛狗小姐姐</span>
+          <span class="btn" id="userName"
+            ><a
+              href="./member-userpage.html"
+              style="text-decoration: none; color: black"
+              >愛遛狗小姐姐</a
+            ></span
+          >
         </div>
         <div class="aside-list">
           <a href="./member-history.html"><span>商品訂單記錄</span></a>
           <a href="./member-Request.html"><span>我的請求</span></a>
           <a href="./member-mission.html"><span>工作清單</span></a>
           <a href="./member-adoption.html"><span>貓狗領養管理</span></a>
+          <div class="accordion accordion-flush" id="userInformation">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseInfo"
+                  aria-expanded="false"
+                  aria-controls="collapseInfo"
+                  id="accordion-btn"
+                >
+                  <span style="margin-left: 35%">會員資料</span>
+                </button>
+              </h2>
+              <div
+                id="collapseInfo"
+                class="accordion-collapse collapse"
+                aria-labelledby="heading"
+                data-bs-parent="#userInformation"
+              >
+                <div class="accordion-body">
+                  <ul>
+                    <li>
+                      <a href="./member-userinfo.html" class="btn"
+                        >更改基本資料</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./member-jobsetting.html" class="btn"
+                        >更改工作設定</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./member-password.html" class="btn">密碼設定</a>
+                    </li>
+                    <li>
+                      <a href="./member-payment.html" class="btn"
+                        >付款方式管理</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./member-Request.html" class="btn"
+                        >常用收件地址</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
           <a href="./member-joinus.html"><span>加入我們</span></a>
           <a><span style="color: #a52a2a">登出</span></a>
         </div>
@@ -133,6 +224,12 @@
               工作清單和更改密碼或修改帳號資料。
             </div>
           </div>
+          <!-- logo背景 -->
+          <div id="logocontainer">
+            <img src="./img/logo2.png" alt="logo" / id="logobg">
+            <img src="./img/logo.png" alt="logo" id="logobg2" />
+          </div>
+          <!-- 這是動畫 -->
           <div class="image-container" id="imageContainer"></div>
         </div>
       </main>
@@ -148,10 +245,23 @@
 
       const images = [
         {
+          src: "../PetLove/svg/skatedog.svg",
+          alt: "skatedog Icon",
+          className: "animate__animated animate__lightSpeedInLeft bottom-right",
+          hoversrc: "../PetLove/svg/sway.svg",
+          changesrc: "../PetLove/svg/wait.svg",
+          animationDuration: 4000,
+        },
+        {
+          src: "../PetLove/svg/hit.svg",
+          alt: "hit Icon",
+          delay: "3s",
+          className: "animate__animated animate__bounceOutRight bottom-right1",
+        },
+        {
           src: "../PetLove/svg/greeting.svg",
           alt: "greeting Icon",
-          className:
-            "inline-img animate__animated animate__fadeInUp bottom-left",
+          className: "animate__animated animate__slideInDown left-top",
         },
       ];
 
@@ -161,8 +271,27 @@
         imgElement.alt = image.alt;
         imgElement.className = image.className;
 
+        if (image.hoversrc) {
+          imgElement.addEventListener("mouseover", () => {
+            imgElement.src = image.hoversrc;
+          });
+          imgElement.addEventListener("mouseout", () => {
+            imgElement.src = image.changesrc;
+          });
+
+          // 動畫結束
+          setTimeout(() => {
+            imgElement.src = image.changesrc;
+          }, image.animationDuration);
+        }
+
         document.getElementById("imageContainer").appendChild(imgElement);
       });
+
+      window.onload = function () {
+        const sidebar = document.querySelector(".nav");
+        sidebar.classList.add("animate__animated", "animate__fadeInLeft");
+      };
     </script>
   </body>
 </html>

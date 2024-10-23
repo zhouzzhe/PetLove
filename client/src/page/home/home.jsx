@@ -127,31 +127,31 @@ function homeMain() {
 
           <div className="d-flex flex-wrap justify-content-center">
             {/* <!-- 服務項目1 --> */}
-            <div className="mx-3 serveBox d-flex flex-wrap justify-content-center align-items-center">
+            <a  href="/walking" className="mx-3 serveBox d-flex flex-wrap justify-content-center align-items-center">
               <img src="https://media.istockphoto.com/id/1388719795/photo/asian-women-viewing-real-estate-websites-on-a-computer.webp?a=1&b=1&s=612x612&w=0&k=20&c=8VaDYrMJL6LCjSEgZEU6LwkTrY0Wq8RJ76phq68l9zc=" />
               <p className="fs-4 fw-bold">代遛服務</p>
-            </div>
+            </a>
             {/* <!-- 服務項目1 --> */}
 
             {/* <!-- 服務項目2 --> */}
-            <div className="mx-3 serveBox d-flex flex-wrap justify-content-center align-items-center">
+            <a href="/nanny" className="mx-3 serveBox d-flex flex-wrap justify-content-center align-items-center">
               <img src="https://media.istockphoto.com/id/1388719795/photo/asian-women-viewing-real-estate-websites-on-a-computer.webp?a=1&b=1&s=612x612&w=0&k=20&c=8VaDYrMJL6LCjSEgZEU6LwkTrY0Wq8RJ76phq68l9zc=" />
               <p className="fs-4 fw-bold">毛孩保母</p>
-            </div>
+            </a>
             {/* <!-- 服務項目2 --> */}
 
             {/* <!-- 服務項目3 --> */}
-            <div className="mx-3 serveBox d-flex flex-wrap justify-content-center align-items-center">
+            <a href="/adopt" className="mx-3 serveBox d-flex flex-wrap justify-content-center align-items-center">
               <img src="https://media.istockphoto.com/id/1388719795/photo/asian-women-viewing-real-estate-websites-on-a-computer.webp?a=1&b=1&s=612x612&w=0&k=20&c=8VaDYrMJL6LCjSEgZEU6LwkTrY0Wq8RJ76phq68l9zc=" />
               <p className="fs-4 fw-bold">毛孩領養</p>
-            </div>
+            </a>
             {/* <!-- 服務項目3 --> */}
 
             {/* <!-- 服務項目4 --> */}
-            <div className="mx-3 serveBox d-flex flex-wrap justify-content-center align-items-center">
+            <a href="/shop" className="mx-3 serveBox d-flex flex-wrap justify-content-center align-items-center">
               <img src="https://media.istockphoto.com/id/1388719795/photo/asian-women-viewing-real-estate-websites-on-a-computer.webp?a=1&b=1&s=612x612&w=0&k=20&c=8VaDYrMJL6LCjSEgZEU6LwkTrY0Wq8RJ76phq68l9zc=" />
               <p className="fs-4 fw-bold">添購商品</p>
-            </div>
+            </a>
             {/* <!-- 服務項目4 --> */}
           </div>
         </div>

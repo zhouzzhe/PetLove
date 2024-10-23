@@ -1,20 +1,21 @@
 nav {
   background-color: #ff6144;
-}
-
-.navbar {
-  padding: 20px 30px;
+  height: 80px;
+  font-size: 18px;
+  li {
+    list-style: none;
+  }
 }
 
 .nav-link {
   background-color: white;
   border: 2px solid black;
   border-radius: 30px;
-  font-size: medium;
   white-space: nowrap;
   width: 120px;
-  height: 50px;
+  height: 55px;
   text-align: center;
+  padding-top: 10px;
 }
 
 .nav-link:hover {

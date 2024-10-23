@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../style/footer.css";
 
-
 class Footer extends Component {
   state = {};
   render() {
@@ -9,8 +8,13 @@ class Footer extends Component {
       <React.Fragment>
         <footer className="row">
           <div className="col-12 d-flex justify-content-center align-items-center">
-            <a href="">
-              <img src="../image/logo2.png" alt="" />
+            <a href="/home" className="">
+              <img
+                className="border border-5"
+                src="/image/logo.png"
+                alt="...loading"
+                style={{ width: "532px", height: "411px" }}
+              ></img>
             </a>
           </div>
 

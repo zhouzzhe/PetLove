@@ -6,6 +6,7 @@ import AdoptRoutes from "./routers/adoptRoutes.js"
 import WalkingRoutes from "./routers/walkingRoutes.js";
 import MemberRoutes from "./routers/memberRoutes.js";
 import HomeRoutes from "./routers/homeRoutes.js"
+import NannyRoutes from "./routers/nannyRoutes.js"
 
 class App extends Component {
   render() {
@@ -17,7 +18,8 @@ class App extends Component {
           <FaqRoutes />
           <AdoptRoutes />
           <WalkingRoutes />
-          <MemberRoutes/>
+          {/* <MemberRoutes/> */}
+          <NannyRoutes/>
         </div>
       </BrowserRouter>
     );
