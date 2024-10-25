@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@douyinfe/semi-ui": "^2.68.3",
+    "bootstrap": "^5.3.3"
+  }
+}

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我的請求</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      div > #finishedbtn,
+      div > #inProgressbtn {
+        background-color: #ff6144;
+        margin-top: 10px;
+      }
+      div > #finishedbtn:hover,
+      div > #inProgressbtn:hover {
+        background-color: #ff6144;
+        border: 1px solid #a52a2a;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      div > .chatdots {
+        margin-right: 50px;
+        font-size: 48px;
+        color: black;
+      }
+      #contactBtn1,
+      #contactBtn2 {
+        font-size: 10px;
+        text-align: center;
+      }
+
+      div > .chat-icon {
+        font-size: 2rem;
+        vertical-align: top;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 置入navbar -->
+    <div id="navbar"></div>
+    <script>
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+    </script>
+    <!-- 置入sidebar -->
+    <div class="wrapper row">
+      <nav
+        class="col-md-2 animate__animated animate__fadeInLeft"
+        aria-label="Left Sidebar"
+      >
+        <div class="userInfo">
+          <img src="./img/大頭照.png" alt="載入失敗" class="circle-image" />
+          <span class="btn" id="userName"
+            ><a
+              href="./member-userpage.html"
+              style="text-decoration: none; color: black"
+              >愛遛狗小姐姐</a
+            ></span
+          >
+        </div>
+        <div class="aside-list">
+          <a href="./member-history.html">
+            <span>商品訂單記錄</span>
+          </a>
+          <a href="./member-Request.html">
+            <span>我的請求</span>
+          </a>
+          <a href="./member-mission.html">
+            <span>工作清單</span>
+          </a>
+          <a href="./member-adoption.html">
+            <span>貓狗領養管理</span>
+          </a>
+          <!-- accordion start -->
+          <div class="accordion accordion-flush" id="userInformation">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseInfo"
+                  aria-expanded="false"
+                  aria-controls="collapseInfo"
+                  id="accordion-btn"
+                >
+                  <span style="margin-left: 35%">會員資料</span>
+                </button>
+              </h2>
+              <div
+                id="collapseInfo"
+                class="accordion-collapse collapse"
+                aria-labelledby="heading"
+                data-bs-parent="#userInformation"
+              >
+                <div class="accordion-body">
+                  <ul>
+                    <li>
+                      <a href="./member-userinfo.html" class="btn"
+                        >更改基本資料</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./member-jobsetting.html" class="btn"
+                        >更改工作設定</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./member-password.html" class="btn">密碼設定</a>
+                    </li>
+                    <li>
+                      <a href="./member-payment.html" class="btn"
+                        >付款方式管理</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./member-Request.html" class="btn"
+                        >常用收件地址</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- accoedion end -->
+          <a href="./member-joinus.html">
+            <span>加入我們</span>
+          </a>
+          <a>
+            <span style="color: #a52a2a">登出</span>
+          </a>
+        </div>
+      </nav>
+      <main class="col-md-10">
+        <!-- 進行中訂單區塊 -->
+        <div>
+          <h5 id="orderInProgress">進行中訂單</h5>
+          <!-- 進行中card -->
+          <div class="card">
+            <div
+              class="card-header"
+              id="requestTitle"
+              style="background-color: #ffcb48"
+            >
+              遛狗#123
+            </div>
+            <div
+              class="card-body d-flex justify-content-between align-items-center"
+            >
+              <div>
+                <h6 class="card-title">時間</h6>
+                <p class="card-text" id="requestDate">
+                  2024-09-19 至 2024-09-20
+                </p>
+                <h6 class="card-title">地點</h6>
+                <p class="card-text" id="requestLocation">台中市南屯區</p>
+                <h6 class="card-title">接單者</h6>
+                <p class="card-text" id="userInfo">愛遛狗的小姊姊</p>
+                <h6 class="card-title">狀態</h6>
+                <p class="card-text" id="requestStatus">已預約</p>
+              </div>
+              <!-- 評分彈窗 -->
+              <a href="./member-contactNanny.html" class="chatdots">
+                <i class="bi bi-chat-dots"></i>
+                <p id="contactBtn1">聯絡保姆</p>
+              </a>
+            </div>
+          </div>
+          <!-- 進行中訂單查詢按鈕 -->
+          <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a
+              href="./member-contactNanny.html"
+              class="btn"
+              type="button"
+              id="inProgressbtn"
+              >查詢更多</a
+            >
+          </div> -->
+          <br />
+          <!-- 已完成訂單區塊 -->
+          <h5 id="finishedOrder">已完成訂單</h5>
+          <!-- 已完成card -->
+          <div class="card">
+            <div
+              class="card-header"
+              id="FrequestTitle"
+              style="background-color: #ffcb48"
+            >
+              遛狗#123
+            </div>
+            <div
+              class="card-body d-flex justify-content-between align-items-center"
+            >
+              <div>
+                <h6 class="card-title">時間</h6>
+                <p class="card-text" id="FrequestDate">
+                  2024-09-19 至 2024-09-20
+                </p>
+                <h6 class="card-title">地點</h6>
+                <p class="card-text" id="FrequestLocation">台中市南屯區</p>
+                <h6 class="card-title">接單者</h6>
+                <p class="card-text" id="userInf">愛遛狗的小姊姊</p>
+                <h6 class="card-title">狀態</h6>
+                <p class="card-text" id="FrequestStatus">已完成</p>
+              </div>
+              <!-- 這是評分彈出視窗 -->
+              <button
+                type="button"
+                class="btn"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                id="modalbtn"
+              >
+                評分去
+              </button>
+
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="scoreModal"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header" style="background-color: #ffcb48">
+                      <h5 class="modal-title" id="scoreModal">
+                        <!-- 訂單編號 -->
+                        <span>保姆#456</span>
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <!-- body -->
+                    <div class="modal-body">
+                      <h6 class="card-title">時間</h6>
+                      <p class="card-text" id="FrequestDate">
+                        2024-09-19 至 2024-09-20
+                      </p>
+                      <h6 class="card-title">地點</h6>
+                      <p class="card-text" id="FrequestLocation">
+                        台中市南屯區
+                      </p>
+                      <h6 class="card-title">接單者</h6>
+                      <p class="card-text" id="userInf">愛遛狗的小姊姊</p>
+                      <h6 class="card-title">狀態</h6>
+                      <p class="card-text" id="FrequestStatus">已完成</p>
+                    </div>
+                    <br />
+                    <br />
+                    <!-- 評分 -->
+                    <div style="display: inline; text-align: center">
+                      <p>評分</p>
+                      <i class="bi bi-star chat-icon"></i>
+                      <i class="bi bi-star chat-icon"></i>
+                      <i class="bi bi-star chat-icon"></i>
+                      <i class="bi bi-star chat-icon"></i>
+                      <i class="bi bi-star chat-icon"></i>
+                    </div>
+                    <!-- 評論留言板功能 -->
+                    <div class="col">
+                      <div class="container mt-5">
+                        <form id="messageForm">
+                          <div class="form-group">
+                            <label for="message">留言:</label>
+                            <textarea
+                              class="form-control"
+                              id="message"
+                              required
+                            ></textarea>
+                          </div>
+                          <br />
+                        </form>
+                        <hr />
+                        <ul id="messageList" class="list-group"></ul>
+                      </div>
+
+                      <script>
+                        $(document).ready(function () {
+                          // 加載留言
+                          loadMessages();
+
+                          // 提交留言
+                          $("#messageForm").on("submit", function (e) {
+                            e.preventDefault();
+                            const message = $("#message").val();
+
+                            $.post("/api/messages", { message }, function () {
+                              $("#message").val("");
+                              loadMessages();
+                            });
+                          });
+                        });
+
+                        function loadMessages() {
+                          $.get("/api/messages", function (messages) {
+                            $("#messageList").empty();
+                            messages.forEach((msg) => {
+                              $("#messageList").append(
+                                `<li class="list-group-item"><strong>${msg.username}:</strong> ${msg.message}</li>`
+                              );
+                            });
+                          });
+                        }
+                      </script>
+                    </div>
+                    <!-- footer -->
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn"
+                        style="background-color: #ff6144"
+                      >
+                        發表評論
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 已完成訂單查詢按鈕 -->
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <a
+            href="./member-orderscore.html"
+            class="btn"
+            type="button"
+            id="finishedbtn"
+            >查詢更多</a
+          >
+        </div>
+      </main>
+    </div>
+    <!-- 置入footer -->
+    <div id="footer"></div>
+    <script>
+      fetch("Footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

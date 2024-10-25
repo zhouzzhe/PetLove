@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>會員中心</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body>
+    <!-- 置入navbar -->
+    <div id="navbar"></div>
+    <script>
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+    </script>
+    <!-- 置入sidebar -->
+    <div class="wrapper row">
+      <nav
+        class="col-md-2 animate__animated animate__fadeInLeft"
+        aria-label="Left Sidebar"
+      >
+        <div class="userInfo">
+          <img src="./img/大頭照.png" alt="載入失敗" class="circle-image" />
+          <span class="btn" id="userName"
+            ><a
+              href="./member-userpage.html"
+              style="text-decoration: none; color: black"
+              >愛遛狗小姐姐</a
+            ></span
+          >
+        </div>
+        <div class="aside-list">
+          <a href="./member-history.html">
+            <span>商品訂單記錄</span>
+          </a>
+          <a href="./member-Request.html">
+            <span>我的請求</span>
+          </a>
+          <a href="./member-mission.html">
+            <span>工作清單</span>
+          </a>
+          <a href="./member-adoption.html">
+            <span>貓狗領養管理</span>
+          </a>
+          <div class="accordion accordion-flush" id="userInformation">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseInfo"
+                  aria-expanded="false"
+                  aria-controls="collapseInfo"
+                  id="accordion-btn"
+                >
+                  <span style="margin-left: 35%">會員資料</span>
+                </button>
+              </h2>
+              <div
+                id="collapseInfo"
+                class="accordion-collapse collapse"
+                aria-labelledby="heading"
+                data-bs-parent="#userInformation"
+              >
+                <div class="accordion-body">
+                  <ul>
+                    <li>
+                      <a href="./member-userinfo.html" class="btn"
+                        >更改基本資料</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./member-jobsetting.html" class="btn"
+                        >更改工作設定</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./member-password.html" class="btn">密碼設定</a>
+                    </li>
+                    <li>
+                      <a href="./member-payment.html" class="btn"
+                        >付款方式管理</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./member-logistic.html" class="btn"
+                        >常用收件地址</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="./member-joinus.html">
+            <span>加入我們</span>
+          </a>
+          <a>
+            <span style="color: #a52a2a">登出</span>
+          </a>
+        </div>
+      </nav>
+      <main class="col-md-10">
+        <div>
+          <!-- 頁頭圖片 -->
+          <div class="image-container">
+            <img src="./img/terms.jpg" alt="failed" class="fixed-image" />
+            <div class="overlay-text">
+              <span id="imageText">成為寵樂的服務夥伴</span>
+            </div>
+          </div>
+          <!-- 文字效果 -->
+          <script>
+            const text = document.getElementById("imageText");
+            const content = text.innerText;
+            text.innerText = "";
+
+            let index = 0;
+            const speed = 150;
+
+            function type() {
+              if (index < content.length) {
+                text.innerText += content.charAt(index);
+                index++;
+                setTimeout(type, speed);
+              } else {
+                console.log("failed！");
+              }
+            }
+            window.onload = type;
+          </script>
+          <br />
+          <br />
+          <!-- card -->
+          <div class="card" id="card1">
+            <div class="card-header" style="background-color: #ff6144">
+              作為寵樂夥伴的優勢
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <ul>
+                  <li>自由選擇您的計劃、服務和報價</li>
+                  <li>您的服務將被分配給附近的寵物父母</li>
+                  <li>我們將替您管理寵物家長的預訂和要求</li>
+                  <li>簡單可靠的支付系統</li>
+                </ul>
+              </blockquote>
+            </div>
+          </div>
+          <br />
+          <div class="card" id="card2">
+            <div class="card-header" style="background-color: #ff6144">
+              一旦與我們合作成為保姆, 你必須:
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <ul>
+                  <li>以友好和專業的方式親自交付您承諾的服務</li>
+                  <li>快速和專業的回應 (24 小時以內) 客戶的諮詢和預訂請求</li>
+                  <li>保持活躍和您的帳戶更新</li>
+                  <li>確認您在法律上能夠在您所在的司法轄區提供寵物服務</li>
+                </ul>
+              </blockquote>
+            </div>
+          </div>
+          <br />
+          <br />
+          <br />
+          <span id="joinpageBtn">
+            <a href="./member.becomewalker.html" class="btn" id="joinWalk"
+              >成為代遛夥伴</a
+            >
+            <a href="./member-becomeNanny.html" class="btn" id="joinNanny"
+              >成為保姆夥伴</a
+            >
+          </span>
+          <!-- 可愛的小貓 -->
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-top: 105px;
+            "
+          >
+            <img src="./img/lookupcat.jpg" alt="lookupcat" />
+          </div>
+        </div>
+      </main>
+    </div>
+    <!-- 置入footer -->
+    <div id="footer"></div>
+    <script>
+      fetch("Footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

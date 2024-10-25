@@ -1,0 +1,97 @@
+body {
+  margin-top: 200px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #ffcb48;
+  opacity: 1;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.btnCat,
+.btnDog {
+  margin-top: 30px;
+  color: white;
+  width: 100px;
+  height: 50px;
+  background-color: #ffcb48;
+  border-radius: 50px;
+  border: 2px solid rgb(0, 0, 0);
+  font-size: larger;
+}
+
+.btnCat:hover,
+.btnDog:hover {
+  background-color: #ff6144;
+}
+
+.itemSort {
+  transform: translateX(-200px);
+  white-space: nowrap;
+}
+
+.leftBar {
+  width: 150px;
+  height: fit-content;
+  border: 1px solid black;
+  margin-left: 30px;
+  padding-top: 20px;
+}
+
+.leftBar ul a {
+  color: black;
+  list-style: none;
+  text-decoration: none;
+}
+
+.cardbox {
+  width: 80%;
+  position: relative;
+  left: 50px;
+}
+
+.cardalign {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+}
+
+.itemCard {
+  border: 2px solid rgb(0, 0, 0);
+  width: 300px;
+  height: 360px;
+  margin: 20px;
+}
+
+.cardPicture {
+  height: 220px;
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.cardText {
+  margin: 0 0 0 10px;
+  transform: translateY(30px);
+}
+
+.cardText p {
+  font-size: 18px;
+}
+.addCartBtn {
+  transform: translateX(180px) translateY(-10px);
+  background-color: #ffcb48;
+  height: 50px;
+  border: none;
+}
+
+.pageBtn {
+  color: black;
+  font-size: 20px;
+  margin: 10px;
+}

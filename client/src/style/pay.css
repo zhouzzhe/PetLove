@@ -1,0 +1,110 @@
+body {
+  background-color: #fffdfa;
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.box {
+  width: 60%;
+  margin-bottom: 50px;
+}
+
+.title {
+  background-color: #ffcb48;
+  border-radius: 20px 20px 0 0;
+  height: 70px;
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.InfoBox {
+  margin-top: 30px;
+  font-size: 18px;
+
+  div {
+    margin-right: 50px;
+  }
+}
+
+.deliveryOption {
+  height: 80px;
+  border: 2px solid #ff6144;
+  border-radius: 20px;
+  padding-left: 20px;
+  margin-top: 20px;
+}
+
+.deInput {
+  width: 60%;
+  margin-left: 20px;
+}
+
+.itemDetail {
+  height: 140px;
+  border: 2px solid #ff6144;
+  border-radius: 20px;
+  padding-left: 20px;
+  margin-top: 20px;
+}
+
+.itemPic {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.itemContentBox {
+  padding: 10px;
+}
+
+.itemContent p {
+  white-space: nowrap;
+  margin-right: 20px;
+}
+
+.itemPrice {
+  margin-left: 80px;
+}
+
+.itemPrice p {
+  white-space: nowrap;
+  margin: 10px 0 0 50px;
+  font-size: 20px;
+}
+
+.subtotal {
+  background-color: #ffecbd;
+  width: 400px;
+}
+
+.subtotalItem,
+.subtotalValue {
+  padding: 0 40px;
+
+  li {
+    list-style: none;
+    padding: 10px;
+  }
+  :last-child {
+    margin-top: 20px;
+    font-weight: 900;
+  }
+}
+
+.checkoutBtn {
+  width: 200px;
+  height: 100px;
+  border: 2px solid black;
+  border-radius: 20px;
+  background-color: #ffcb48;
+  position: relative;
+  left: 100px;
+}
+
+.checkoutBtn:hover {
+  background-color: #ff6144;
+}
