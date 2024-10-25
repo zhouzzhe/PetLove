@@ -1,8 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../style/nanny_1_main.css";
 
-function NannyMain() {
+function NannyMain(prop) {
+  const [data, setData] = useState([
+    {
+      user_id: 1,
+      user_name: "井口理",
+      user_distance: "200",
+      user_price: "5880",
+    },
+  ]);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8000/nanny`);
+      // console.log(response.data);
+      setData(response.data);
+    } catch (error) {
+      console.error("Error fetching data", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <React.Fragment>
       {/* 尋找寵物保母表單 */}
@@ -64,66 +87,43 @@ function NannyMain() {
           </div>
         </div>
         <div className="row justify-content-center mx-5">
-          <div className="col-xxxl-3 mb-4">
-            <div className="nannyCard d-flex align-items-center">
-              <div className="col-4 cardImg me-3">
-                <img
-                  src="/image/南瓜.jpg"
-                  alt=""
-                  className="img-fluid"
-                  style={{ borderRadius: "20px", width: "60%" }}
-                />
-              </div>
-              <div
-                className="col-8 d-flex justify-content-between align-items-center"
-                style={{ paddingRight: "50px" }}
+          {data.map((cardItem) => (
+            <div className="col-xxxl-3 mb-4">
+              <a
+                href={`/nanny/id=${cardItem.user_id}/info`}
+                className="text-decoration-none text-dark"
               >
-                <div className="nameStarRecommend">
-                  <div>小姐姐</div>
-                  <div className="mb-1">
-                    <img src="./img/Star.png" alt="" />
-                    <img src="./img/Star.png" alt="" />
-                    <img src="./img/Star.png" alt="" />
-                    <img src="./img/Star.png" alt="" />
-                    <img src="./img/Star.png" alt="" />
+                <div className="nannyCard d-flex align-items-center">
+                  <div className="col-4 cardImg me-3">
+                    <img
+                      src="/image/南瓜.jpg"
+                      alt=""
+                      className="img-fluid"
+                      style={{ borderRadius: "20px", width: "60%" }}
+                    />
                   </div>
-                  <div>155則評論</div>
-                </div>
-                <div>距離10公里</div>
-                <div>300NTD</div>
-              </div>
-            </div>
-          </div>
-          <div className="col-xxxl-3 mb-4">
-            <div className="nannyCard d-flex align-items-center">
-              <div className="col-4 cardImg me-3">
-                <img
-                  src="/image/南瓜.jpg"
-                  alt=""
-                  className="img-fluid"
-                  style={{ borderRadius: "20px", width: "60%" }}
-                />
-              </div>
-              <div
-                className="col-8 d-flex justify-content-between align-items-center"
-                style={{ paddingRight: "50px" }}
-              >
-                <div className="nameStarRecommend">
-                  <div>小姐姐</div>
-                  <div className="mb-1">
-                    <img src="./img/Star.png" alt="" />
-                    <img src="./img/Star.png" alt="" />
-                    <img src="./img/Star.png" alt="" />
-                    <img src="./img/Star.png" alt="" />
-                    <img src="./img/Star.png" alt="" />
+                  <div
+                    className="col-8 d-flex justify-content-between align-items-center"
+                    style={{ paddingRight: "50px" }}
+                  >
+                    <div className="nameStarRecommend">
+                      <div>{cardItem.user_name}</div>
+                      <div className="mb-1">
+                        <img src="./img/Star.png" alt="" />
+                        <img src="./img/Star.png" alt="" />
+                        <img src="./img/Star.png" alt="" />
+                        <img src="./img/Star.png" alt="" />
+                        <img src="./img/Star.png" alt="" />
+                      </div>
+                      <div>155則評論</div>
+                    </div>
+                    <div>距離{cardItem.user_distance}公里</div>
+                    <div>TWD {cardItem.user_price}</div>
                   </div>
-                  <div>155則評論</div>
                 </div>
-                <div>距離10公里</div>
-                <div>300NTD</div>
-              </div>
+              </a>
             </div>
-          </div>
+          ))}
           {/* 可重複的 nannyCard 區域 */}
         </div>
         <div className="choosepage">
@@ -149,7 +149,7 @@ function NannyMain() {
         <div className="row align-items-center mb-4 mt-5">
           <div className="col-6 d-flex justify-content-center">
             <img
-              src="./img/什麼樣適合1.png"
+              src="/image/什麼樣適合1.png"
               alt=""
               className="img-fluid"
               style={{ maxWidth: "80%" }}
@@ -180,7 +180,7 @@ function NannyMain() {
           </div>
           <div className="col-6 d-flex justify-content-center">
             <img
-              src="./img/什麼樣適合2.png"
+              src="/image/什麼樣適合2.png"
               alt=""
               className="img-fluid"
               style={{ maxWidth: "80%" }}
@@ -200,7 +200,7 @@ function NannyMain() {
         <div className="row align-items-center mb-4 mt-5">
           <div className="col-7 d-flex justify-content-center">
             <img
-              src="./img/為什性任寵樂1.png"
+              src="/image/為什性任寵樂1.png"
               alt=""
               className="img-fluid"
               style={{ maxWidth: "100%" }}
@@ -209,7 +209,7 @@ function NannyMain() {
           <div className="col-5" style={{ textAlign: "right" }}>
             <div className="mb-3 d-flex align-items-center">
               <img
-                src="./img/checked.png"
+                src="/image/checked.png"
                 alt=""
                 className="mr-2"
                 style={{ maxWidth: "50px", height: "auto" }}
@@ -218,7 +218,7 @@ function NannyMain() {
             </div>
             <div className="mb-3 d-flex align-items-center">
               <img
-                src="./img/checked.png"
+                src="/image/checked.png"
                 alt=""
                 className="mr-2"
                 style={{ maxWidth: "50px", height: "auto" }}
@@ -227,7 +227,7 @@ function NannyMain() {
             </div>
             <div className="mb-3 d-flex align-items-center">
               <img
-                src="./img/checked.png"
+                src="/image/checked.png"
                 alt=""
                 className="mr-2"
                 style={{ maxWidth: "50px", height: "auto" }}
@@ -244,7 +244,7 @@ function NannyMain() {
           >
             <div className="mb-3 d-flex align-items-center">
               <img
-                src="./img/checked.png"
+                src="/image/checked.png"
                 alt=""
                 className="mr-2"
                 style={{ maxWidth: "50px", height: "auto" }}
@@ -253,7 +253,7 @@ function NannyMain() {
             </div>
             <div className="mb-3 d-flex align-items-center">
               <img
-                src="./img/checked.png"
+                src="/image/checked.png"
                 alt=""
                 className="mr-2"
                 style={{ maxWidth: "50px", height: "auto" }}
@@ -262,7 +262,7 @@ function NannyMain() {
             </div>
             <div className="mb-3 d-flex align-items-center">
               <img
-                src="./img/checked.png"
+                src="/image/checked.png"
                 alt=""
                 className="mr-2"
                 style={{ maxWidth: "50px", height: "auto" }}
@@ -272,7 +272,7 @@ function NannyMain() {
           </div>
           <div className="col-7 d-flex justify-content-center">
             <img
-              src="./img/為什信任寵樂2.png"
+              src="/image/為什信任寵樂2.png"
               alt=""
               className="img-fluid"
               style={{ maxWidth: "100%" }}

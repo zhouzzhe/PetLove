@@ -11,6 +11,7 @@ var member = require("./router/member.js");
 var adopt = require("./router/adopt.js");
 var cart = require("./router/cart.js");
 var walking = require('./router/walking.js')
+var nanny = require("./router/nanny.js")
 
 app.use(cors());
 // 解析json資料
@@ -27,6 +28,8 @@ app.use("/member", member);
 app.use("/adopt", adopt);
 app.use("/cart", cart);
 app.use("/walking", walking);
+app.use("/nanny", nanny);
+
 
 app.listen(8000, function () {
   console.log("成功" + new Date().toLocaleTimeString());

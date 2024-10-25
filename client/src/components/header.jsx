@@ -8,8 +8,8 @@ function Header() {
       <nav className="navbar navbar-expand-lg fixed-top">
         <div className="container-fluid row">
           <div className="col-3">
-            <a className="navbar-brand" href="#">
-              Navbar
+            <a className="navbar-brand " href="/home" >
+              <img src="/image/logo2.png" alt="...loading" className="border" style={{width:"80px"}}/>
             </a>
           </div>
           <div
@@ -60,14 +60,14 @@ function Header() {
             </div>
             <div className="container-fluid d-flex flex-nowrap col-6 align-items-center">
               <div className="mx-4">
-                <form className="d-flex" role="search">
+                <form className="d-flex align-items-center" role="search">
                   <input
                     className="form-control me-2"
                     type="search"
                     placeholder="Search"
                   />
                   <a href="" type="submit">
-                    <img src="../img/search.svg" style={{ height: "45px" }} />
+                    <img src="/svg/search.svg" style={{ height: "45px" }} />
                   </a>
                 </form>
               </div>
@@ -76,7 +76,7 @@ function Header() {
                 <li className="nav-item">
                   <a href="#">
                     <img
-                      src="../img/membercat.png"
+                      src="/image/membercat.png"
                       style={{ height: "55px" }}
                     />
                   </a>
@@ -86,7 +86,7 @@ function Header() {
               <div className="mx-4 text-center">
                 <li className="nav-item">
                   <a href="#">
-                    <img src="../img/cart.png" style={{ height: "50px" }} />
+                    <img src="/image/cart.png" style={{ height: "50px" }} />
                   </a>
                 </li>
               </div>

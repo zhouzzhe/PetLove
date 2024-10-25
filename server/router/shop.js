@@ -37,21 +37,57 @@ GROUP BY
 
 router.get("/products/:id", function (req, res) {
   let sql = `
-    SELECT p.product_id, p.category, p.product_name, p.product_img,
-    GROUP_CONCAT( CONCAT(
-    '{"spec": "', s.specifications, '", ',
-    '"taste": "', s.taste, '", ','
-    "price": "', s.price, '"}' )
-    SEPARATOR ', ' )
-    AS specifications FROM product p
-    JOIN product_spec s ON p.product_id = s.product_id
-    WHERE p.product_id = ?
-    GROUP BY p.product_id;
-`;
+    SELECT
+      p.product_id,
+      p.category,
+      p.product_name,
+      p.product_img,
+    GROUP_CONCAT(
+      CONCAT(
+        '{"spec": "', s.specifications, '", ',
+        '"taste": "', s.taste, '", ','
+        "price": "', s.price, '"}'
+        ) SEPARATOR ', ' )
+    AS specifications
+    FROM
+      product p
+    JOIN
+      product_spec s ON p.product_id = s.product_id
+    WHERE
+      p.product_id = ?
+    GROUP BY
+      p.product_id;
+  `;
   db.exc(sql, [req.params.id], function (results, fields) {
     // res.send(JSON.stringify(row[0]));
     res.send(results[0]);
   });
+});
+
+router.get("/orderData", function (req, res) {
+  let sql = `select * from orders`;
+  db.exc(sql, [], function (results, fields) {
+    if (results) {
+      res.send(results);
+    } else {
+      console.log(fields);
+    }
+  });
+});
+
+router.post("/addOrders", express.json(), function (req, res) {
+  let sql = `insert into orders(user_id,total_price) values(?,?)`;
+  db.exc(
+    sql,
+    [req.body.user_id, req.body.total_price],
+    function (results, fields) {
+      if (results) {
+        res.send(results);
+      } else {
+        console.log(fields);
+      }
+    }
+  );
 });
 
 router.post("/addToCart", function (req, res) {

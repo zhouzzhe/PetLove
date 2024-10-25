@@ -114,6 +114,7 @@ import "../../style/adopt_3_form.css";
 // }
 
 function AdoptForm() {
+  
   return (
     <React.Fragment>
       <a href="" className="backPage">

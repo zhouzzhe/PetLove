@@ -34,12 +34,12 @@ body {
 .Subtotal {
   border-bottom: 2px #ff6144 solid;
   border-top: 3px #ff6144 solid;
-  width: 80%;
+  width: 100%;
 }
 
 .total {
-  margin: 3%;
-  width: 80%;
+  /* margin: 3%; */
+  width: 100%;
 }
 
 .submitRequest button {
