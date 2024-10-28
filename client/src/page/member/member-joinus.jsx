@@ -74,11 +74,6 @@ const JoinUs = () => {
       }
 
       document.getElementById("imageContainer").appendChild(imgElement);
-
-      window.onload = function () {
-        const sidebar = document.querySelector(".nav");
-        sidebar.classList.add("animate__animated", "animate__fadeInLeft");
-      };
     });
   }, []);
   return (
@@ -130,10 +125,10 @@ const JoinUs = () => {
           <br />
           <br />
           <span id="joinpageBtn">
-            <a href="#" className="btn" id="joinWalk">
+            <a href="/member/become-walker" className="btn" id="joinWalk">
               成為代遛夥伴
             </a>
-            <a href="#" className="btn" id="joinNanny">
+            <a href="/member/become-nanny" className="btn" id="joinNanny">
               成為保姆夥伴
             </a>
           </span>

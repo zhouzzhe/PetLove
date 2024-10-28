@@ -61,13 +61,6 @@ const MemberMain = () => {
       }
 
       document.getElementById("imageContainer").appendChild(imgElement);
-
-      // window.onload = function () {
-      //   const sidebar = document.querySelector(".nav");
-      //   sidebar.classList.add("animate__animated", "animate__fadeInLeft");
-      // };
-      const sidebar = document.querySelector(".nav");
-      sidebar.classList.add("animate__animated", "animate__fadeInLeft");
     });
   }, []);
 

@@ -1,9 +1,13 @@
 import React from "react";
+import "animate.css";
 
 function Sidebar() {
   return (
     <React.Fragment>
-      <div className="col-md-2" aria-label="Left Sidebar">
+      <div
+        className="col-md-2 animate__animated animate__fadeInLeft"
+        aria-label="Left Sidebar"
+      >
         <div className="userInfo">
           <img
             src="/image/大頭照.png"
@@ -20,16 +24,16 @@ function Sidebar() {
           </span>
         </div>
         <div className="aside-list">
-          <a href="/member/member-history.jsx">
+          <a href="/member/history">
             <span>商品訂單記錄</span>
           </a>
-          <a href="./member-Request.html">
+          <a href="/member/request">
             <span>我的請求</span>
           </a>
-          <a href="./member-mission.html">
+          <a href="/member/mission">
             <span>工作清單</span>
           </a>
-          <a href="/member/member-adoption.jsx">
+          <a href="/member/adoption">
             <span>貓狗領養管理</span>
           </a>
 
@@ -67,17 +71,17 @@ function Sidebar() {
                       </a>
                     </li>
                     <li>
-                      <a href="./member-password.html" className="btn">
+                      <a href="/member/password" className="btn">
                         密碼設定
                       </a>
                     </li>
                     <li>
-                      <a href="/member/addcard.jsx" className="btn">
+                      <a href="/member/payment" className="btn">
                         付款方式管理
                       </a>
                     </li>
                     <li>
-                      <a href="./member-logistic.html" className="btn">
+                      <a href="/member/logistic" className="btn">
                         常用收件地址
                       </a>
                     </li>
@@ -87,7 +91,7 @@ function Sidebar() {
             </div>
           </div>
 
-          <a href="./member-joinus.html">
+          <a href="/member/join-us">
             <span>加入我們</span>
           </a>
           <a>

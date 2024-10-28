@@ -2,17 +2,7 @@ import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
 import "../../style/member.css";
 
-const CardAdd = () => {
-  const ColoredLine = ({ color }) => (
-    <hr
-      style={{
-        color: `#${color}`,
-        backgroundColor: `#${color}`,
-        height: 4,
-        margin: 1,
-      }}
-    />
-  );
+const UserInfo = () => {
   useEffect(() => {
     const images = [
       {
@@ -66,45 +56,52 @@ const CardAdd = () => {
       }
 
       document.getElementById("imageContainer").appendChild(imgElement);
+
+      window.onload = function () {
+        const sidebar = document.querySelector(".nav");
+        sidebar.classList.add("animate__animated", "animate__fadeInLeft");
+      };
     });
   }, []);
+
   return (
-    <React.Fragment>
-      <div className="wrapper row">
-        <Sidebar />
-        <main className="col-md-10">
-          <div>
-            <h5>新增付款方式</h5>
-            <ColoredLine color="ff6144" />
-            <form>
-              <div className="mb-3">
-                <label htmlFor="userCard" className="form-label">
-                  信用卡
-                </label>
-                <input type="text" className="form-control" id="userCard" />
-                <div id="userCard" className="form-text"></div>
+    <div class="wrapper row">
+      <main className="col-md-10">
+        <div>
+          <div className="card">
+            <h5 className="card-header">基本資料</h5>
+            <div className="card-body">
+              <p className="card-title">名稱</p>
+              <p className="card-text">
+                <input type="text" />
+              </p>
+              <br />
+              <p className="card-title">手機</p>
+              <p className="card-text">
+                <input type="tel" />
+              </p>
+              <div className="card-body d-flex justify-content-between align-items-center">
+                {/* 用margin-left對齊 */}
+                <div style={{ marginLeft: "-15px" }}>
+                  <p className="card-title">電子郵件</p>
+                  <input type="email" />
+                </div>
+                <a href className="btn" id="verifybtn">
+                  驗證信箱
+                </a>
               </div>
-              <div className="mb-3">
-                <label htmlFor="userName" className="form-label">
-                  持卡人姓名
-                </label>
-                <input type="text" className="form-control" id="userName" />
-              </div>
-              <button
-                type="submit"
-                className="btn"
-                style={{ backgroundColor: "#ffcb48" }}
-              >
-                新增付款方式
-              </button>
-            </form>
-            {/* 這是動畫 */}
-            <div className="image-container" id="imageContainer"></div>
+            </div>
           </div>
-        </main>
-      </div>
-    </React.Fragment>
+          <br />
+          <br />
+          {/* 快速登錄 */}
+          <h5 style={{ marginLeft: "5px" }}>快速登錄</h5>
+          <br />
+          <button className="saveBtn">儲存設定</button>
+        </div>
+      </main>
+    </div>
   );
 };
 
-export default CardAdd;
+export default UserInfo;

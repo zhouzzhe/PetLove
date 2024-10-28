@@ -46,11 +46,11 @@ function FAQFrom(prop) {
     };
     console.log(inputData);
 
-    try {
-      const response = await axios.post(
-        ``
-      )
-    }
+    // try {
+    //   const response = await axios.post(
+    //     ``
+    //   )
+    // }
   };
 
   return (

@@ -2,17 +2,7 @@ import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
 import "../../style/member.css";
 
-const CardAdd = () => {
-  const ColoredLine = ({ color }) => (
-    <hr
-      style={{
-        color: `#${color}`,
-        backgroundColor: `#${color}`,
-        height: 4,
-        margin: 1,
-      }}
-    />
-  );
+const Payment = () => {
   useEffect(() => {
     const images = [
       {
@@ -66,45 +56,46 @@ const CardAdd = () => {
       }
 
       document.getElementById("imageContainer").appendChild(imgElement);
+
+      window.onload = function () {
+        const sidebar = document.querySelector(".nav");
+        sidebar.classList.add("animate__animated", "animate__fadeInLeft");
+      };
     });
   }, []);
+
   return (
     <React.Fragment>
       <div className="wrapper row">
         <Sidebar />
         <main className="col-md-10">
           <div>
-            <h5>新增付款方式</h5>
-            <ColoredLine color="ff6144" />
-            <form>
-              <div className="mb-3">
-                <label htmlFor="userCard" className="form-label">
-                  信用卡
-                </label>
-                <input type="text" className="form-control" id="userCard" />
-                <div id="userCard" className="form-text"></div>
-              </div>
-              <div className="mb-3">
-                <label htmlFor="userName" className="form-label">
-                  持卡人姓名
-                </label>
-                <input type="text" className="form-control" id="userName" />
-              </div>
-              <button
-                type="submit"
-                className="btn"
-                style={{ backgroundColor: "#ffcb48" }}
-              >
+            <btn className="addBtn">
+              <a href="/member/card-add" style={{ textDecoration: "none" }}>
                 新增付款方式
-              </button>
-            </form>
-            {/* 這是動畫 */}
-            <div className="image-container" id="imageContainer"></div>
+              </a>
+            </btn>
+            <br />
+            <br />
+            <div
+              className="card-body d-flex justify-content-between align-items-center"
+              id="payCardbody"
+            >
+              <div style={{ padding: "10px 20px" }}>
+                <p className="card-title">信用卡</p>
+                <div className="cardNumber">XXXX-XXXX-XXXX-XXXX</div>
+              </div>
+              <a href="#" className="btn btn-management">
+                管理
+              </a>
+            </div>
           </div>
+          {/* 這是動畫 */}
+          <div className="image-container" id="imageContainer"></div>
         </main>
       </div>
     </React.Fragment>
   );
 };
 
-export default CardAdd;
+export default Payment;

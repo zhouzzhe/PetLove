@@ -2,17 +2,7 @@ import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
 import "../../style/member.css";
 
-const CardAdd = () => {
-  const ColoredLine = ({ color }) => (
-    <hr
-      style={{
-        color: `#${color}`,
-        backgroundColor: `#${color}`,
-        height: 4,
-        margin: 1,
-      }}
-    />
-  );
+const PassWord = () => {
   useEffect(() => {
     const images = [
       {
@@ -66,38 +56,51 @@ const CardAdd = () => {
       }
 
       document.getElementById("imageContainer").appendChild(imgElement);
+
+      window.onload = function () {
+        const sidebar = document.querySelector(".nav");
+        sidebar.classList.add("animate__animated", "animate__fadeInLeft");
+      };
     });
   }, []);
+
   return (
     <React.Fragment>
       <div className="wrapper row">
         <Sidebar />
         <main className="col-md-10">
           <div>
-            <h5>新增付款方式</h5>
-            <ColoredLine color="ff6144" />
-            <form>
-              <div className="mb-3">
-                <label htmlFor="userCard" className="form-label">
-                  信用卡
-                </label>
-                <input type="text" className="form-control" id="userCard" />
-                <div id="userCard" className="form-text"></div>
-              </div>
-              <div className="mb-3">
-                <label htmlFor="userName" className="form-label">
-                  持卡人姓名
-                </label>
-                <input type="text" className="form-control" id="userName" />
-              </div>
-              <button
-                type="submit"
-                className="btn"
+            <div className="card">
+              <h5
+                className="card-header text-center"
+                id="card-header"
                 style={{ backgroundColor: "#ffcb48" }}
               >
-                新增付款方式
-              </button>
-            </form>
+                <i className="bi bi-arrow-left me-2 btn" />
+                <span>更改密碼</span>
+              </h5>
+              <div className="card-body">
+                <p className="card-title">輸入新密碼</p>
+                <p className="card-text">
+                  <input
+                    className="input"
+                    type="password"
+                    placeholder="請輸入最少8個字元含數字和英文大小寫"
+                    style={{
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  />
+                </p>
+                <br />
+                <p className="card-title">確認密碼</p>
+                <p className="card-text">
+                  <input type="password" placeholder="請再次輸入密碼" />
+                </p>
+                <br />
+                <button className="confirmBtn">更改密碼</button>
+              </div>
+            </div>
             {/* 這是動畫 */}
             <div className="image-container" id="imageContainer"></div>
           </div>
@@ -107,4 +110,4 @@ const CardAdd = () => {
   );
 };
 
-export default CardAdd;
+export default PassWord;
