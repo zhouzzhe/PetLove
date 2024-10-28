@@ -56,7 +56,7 @@ class FAQMain extends Component {
             <div className="accordion-item rounded-top">
               <h2 className="accordion-header" id="panelsStayOpen-headingTwo">
                 <button
-                  className="accordion-button collapsed rounded-top"
+                  className="accordion-button rounded-top"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#panelsStayOpen-collapseTwo"
@@ -89,7 +89,7 @@ class FAQMain extends Component {
             <div className="accordion-item rounded-top">
               <h2 className="accordion-header" id="panelsStayOpen-headingThree">
                 <button
-                  className="accordion-button collapsed rounded-top"
+                  className="accordion-button rounded-top"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#panelsStayOpen-collapseThree"

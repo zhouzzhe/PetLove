@@ -1,8 +1,18 @@
 import React, { useEffect } from "react";
-import Sidebar from "./Sidebar.jsx";
+import Sidebar from "./Sidebar";
 import "../../style/member.css";
 
-const MemberMain = () => {
+const CardAdd = () => {
+  const ColoredLine = ({ color }) => (
+    <hr
+      style={{
+        color: `#${color}`,
+        backgroundColor: `#${color}`,
+        height: 4,
+        margin: 1,
+      }}
+    />
+  );
   useEffect(() => {
     const images = [
       {
@@ -17,11 +27,6 @@ const MemberMain = () => {
         src: "/svg/hit.svg",
         alt: "hit Icon",
         className: "animate__animated animate__bounceOutRight bottom-right1",
-      },
-      {
-        src: "/svg/greeting.svg",
-        alt: "greeting Icon",
-        className: "animate__animated animate__slideInDown left-top",
       },
     ];
 
@@ -62,34 +67,42 @@ const MemberMain = () => {
 
       document.getElementById("imageContainer").appendChild(imgElement);
 
-      // window.onload = function () {
-      //   const sidebar = document.querySelector(".nav");
-      //   sidebar.classList.add("animate__animated", "animate__fadeInLeft");
-      // };
-      const sidebar = document.querySelector(".nav");
-      sidebar.classList.add("animate__animated", "animate__fadeInLeft");
+      window.onload = function () {
+        const sidebar = document.querySelector(".nav");
+        sidebar.classList.add("animate__animated", "animate__fadeInLeft");
+      };
     });
   }, []);
-
   return (
     <React.Fragment>
-      {/* 置入sidebar */}
       <div className="wrapper row">
         <Sidebar />
         <main className="col-md-10">
           <div>
-            <div className="marquee-content">
-              <marquee SCROLLAMOUNT="8" LOOP="0">
-                您的帳號控制台裡，您可以檢視近期的訂單，管理您的收貨地址，您可以更改密碼或修改帳號資料。
-                您的帳號控制台裡，您可以檢視近期的訂單，管理您的收貨地址，您可以更改密碼或修改帳號資料。
-                您的帳號控制台裡，您可以檢視近期的訂單，管理您的收貨地址，您可以更改密碼或修改帳號資料。
-              </marquee>
-            </div>
-            {/* logo背景 */}
-            <div id="logocontainer">
-              <img src="/image/logo2.png" alt="logo" id="logobg" />
-              <img src="/image/LOGO.png" alt="logo" id="logobg2" />
-            </div>
+            <h5>新增付款方式</h5>
+            <ColoredLine color="ff6144" />
+            <form>
+              <div className="mb-3">
+                <label htmlFor="userCard" className="form-label">
+                  信用卡
+                </label>
+                <input type="text" className="form-control" id="userCard" />
+                <div id="userCard" className="form-text"></div>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="userName" className="form-label">
+                  持卡人姓名
+                </label>
+                <input type="text" className="form-control" id="userName" />
+              </div>
+              <button
+                type="submit"
+                className="btn"
+                style={{ backgroundColor: "#ffcb48" }}
+              >
+                新增付款方式
+              </button>
+            </form>
             {/* 這是動畫 */}
             <div className="image-container" id="imageContainer"></div>
           </div>
@@ -99,4 +112,4 @@ const MemberMain = () => {
   );
 };
 
-export default MemberMain;
+export default CardAdd;

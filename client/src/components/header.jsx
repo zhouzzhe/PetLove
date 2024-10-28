@@ -29,17 +29,17 @@ function Header() {
                   </a>
                   <ul className="dropdown-menu">
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="/walking">
                         代遛服務
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="/nanny">
                         寵物保母
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="/adopt">
                         毛孩領養
                       </a>
                     </li>
@@ -47,12 +47,12 @@ function Header() {
                 </li>
 
                 <li className="nav-item mx-3">
-                  <a className="nav-link active" href="#">
+                  <a className="nav-link active" href="/shop">
                     商品一覽
                   </a>
                 </li>
                 <li className="nav-item mx-3">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="/faq">
                     FQA
                   </a>
                 </li>
@@ -74,7 +74,7 @@ function Header() {
 
               <div className="mx-4 text-center">
                 <li className="nav-item">
-                  <a href="#">
+                  <a href="/member">
                     <img
                       src="/image/membercat.png"
                       style={{ height: "55px" }}
@@ -85,7 +85,7 @@ function Header() {
 
               <div className="mx-4 text-center">
                 <li className="nav-item">
-                  <a href="#">
+                  <a href="/shop/cart">
                     <img src="/image/cart.png" style={{ height: "50px" }} />
                   </a>
                 </li>

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import Sidebar from "./Sidebar.jsx";
+import Sidebar from "./Sidebar";
 import "../../style/member.css";
 
-const MemberMain = () => {
+const Logistic = () => {
   useEffect(() => {
     const images = [
       {
@@ -17,11 +17,6 @@ const MemberMain = () => {
         src: "/svg/hit.svg",
         alt: "hit Icon",
         className: "animate__animated animate__bounceOutRight bottom-right1",
-      },
-      {
-        src: "/svg/greeting.svg",
-        alt: "greeting Icon",
-        className: "animate__animated animate__slideInDown left-top",
       },
     ];
 
@@ -62,33 +57,25 @@ const MemberMain = () => {
 
       document.getElementById("imageContainer").appendChild(imgElement);
 
-      // window.onload = function () {
-      //   const sidebar = document.querySelector(".nav");
-      //   sidebar.classList.add("animate__animated", "animate__fadeInLeft");
-      // };
-      const sidebar = document.querySelector(".nav");
-      sidebar.classList.add("animate__animated", "animate__fadeInLeft");
+      window.onload = function () {
+        const sidebar = document.querySelector(".nav");
+        sidebar.classList.add("animate__animated", "animate__fadeInLeft");
+      };
     });
   }, []);
-
   return (
     <React.Fragment>
-      {/* 置入sidebar */}
       <div className="wrapper row">
         <Sidebar />
         <main className="col-md-10">
           <div>
-            <div className="marquee-content">
-              <marquee SCROLLAMOUNT="8" LOOP="0">
-                您的帳號控制台裡，您可以檢視近期的訂單，管理您的收貨地址，您可以更改密碼或修改帳號資料。
-                您的帳號控制台裡，您可以檢視近期的訂單，管理您的收貨地址，您可以更改密碼或修改帳號資料。
-                您的帳號控制台裡，您可以檢視近期的訂單，管理您的收貨地址，您可以更改密碼或修改帳號資料。
-              </marquee>
-            </div>
-            {/* logo背景 */}
-            <div id="logocontainer">
-              <img src="/image/logo2.png" alt="logo" id="logobg" />
-              <img src="/image/LOGO.png" alt="logo" id="logobg2" />
+            <div>
+              <a href="" className="btn" id="userAdress">
+                新增常用地址
+              </a>
+              <a href="" className="btn" id="userStore">
+                新增常用超商
+              </a>
             </div>
             {/* 這是動畫 */}
             <div className="image-container" id="imageContainer"></div>
@@ -99,4 +86,4 @@ const MemberMain = () => {
   );
 };
 
-export default MemberMain;
+export default Logistic;

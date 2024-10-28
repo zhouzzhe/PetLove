@@ -1,5 +1,5 @@
 var mysql = require("mysql");
-const { use } = require("./router/cart");
+const { use } = require("./router/faq");
 
 exports.exc = (sql, data, callback) => {
   const connection = mysql.createConnection({

@@ -18,7 +18,7 @@ class App extends Component {
           <FaqRoutes />
           <AdoptRoutes />
           <WalkingRoutes />
-          {/* <MemberRoutes/> */}
+          <MemberRoutes/>
           <NannyRoutes/>
         </div>
       </BrowserRouter>

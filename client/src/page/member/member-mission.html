@@ -10,25 +10,21 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
     <style>
-      .table {
+      #missionTable {
         border: none;
         background-color: #fff5e6;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
         overflow: hidden;
-        margin-bottom: 20px; /* 表格之間的距離 */
+        margin-bottom: 20px;
       }
-      .table th,
-      .table td {
+      #missionTable th,
+      #missionTable td {
         border: none;
-        text-align: center; /* 改成置中對齊 */
+        text-align: center;
       }
-      .table th {
+      #missionTable th {
         background-color: #ffcb48;
         color: #fff;
       }
@@ -37,7 +33,7 @@
       }
       div > .star-icon {
         font-size: 1.5rem;
-        vertical-align: top; /* 將星星垂直對齊到頂部 */
+        vertical-align: top;
       }
       div > #finishedbtn {
         background-color: #ff6144;
@@ -62,19 +58,10 @@
     </script>
     <!-- 置入sidebar -->
     <div class="wrapper row">
-      <nav
-        class="col-md-2 animate__animated animate__fadeInLeft"
-        aria-label="Left Sidebar"
-      >
+      <nav class="col-md-2" aria-label="Left Sidebar">
         <div class="userInfo">
           <img src="./img/大頭照.png" alt="載入失敗" class="circle-image" />
-          <span class="btn" id="userName"
-            ><a
-              href="./member-userpage.html"
-              style="text-decoration: none; color: black"
-              >愛遛狗小姐姐</a
-            ></span
-          >
+          <span class="btn">愛遛狗小姐姐</span>
         </div>
         <div class="aside-list">
           <a href="./member-history.html">
@@ -102,7 +89,7 @@
                   aria-controls="collapseInfo"
                   id="accordion-btn"
                 >
-                  <span style="margin-left: 35%">會員資料</span>
+                  會員資料
                 </button>
               </h2>
               <div
@@ -119,7 +106,7 @@
                       >
                     </li>
                     <li>
-                      <a href="./member-jobsetting.html" class="btn"
+                      <a href="./member-userpage.html" class="btn"
                         >更改工作設定</a
                       >
                     </li>
@@ -155,7 +142,7 @@
           <h5>工作管理</h5>
           <!-- 即將到來工作任務 -->
           <p style="margin-top: 20px">即將到來</p>
-          <table class="table">
+          <table class="table" id="missionTable">
             <thead>
               <tr>
                 <th>日期</th>

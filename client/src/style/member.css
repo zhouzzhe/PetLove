@@ -30,8 +30,9 @@ body {
 
 .col-md-10 {
   background-color: #fffdfa;
-  height: 175vh;
-  padding: 20px;
+  height: 150vh;
+  /* padding: 20px; */
+  margin-top: -80px;
 }
 
 .circle-image {
@@ -52,11 +53,16 @@ body {
   font-size: 0.8rem;
 }
 
+.col-md-2 {
+  background-color: #ff6144;
+  margin-top: -120px;
+}
+
 .aside-list {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  width: 100%;
   background-color: #fffdfa;
   border-radius: 25px;
 }
@@ -111,9 +117,13 @@ body {
 }
 .accordion-body a {
   text-decoration: none;
+  text-align: center;
   color: black;
-  font-size: 12px;
+  font-size: 1rem;
+  border-radius: 25px;
   background-color: #ffcb48;
+  width: 100%;
+  margin: 5px 0;
 }
 .accordion-body a:hover {
   background-color: #ff6144;
@@ -204,6 +214,11 @@ div > .btn-management {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+#userAdress:hover,
+#userStore:hover {
+  background-color: #ffe5a3;
+}
+
 .image-container {
   position: relative;
   width: 100%;
@@ -235,6 +250,7 @@ div > .btn-management {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   margin: 5px 0;
 }
 
@@ -282,18 +298,54 @@ div > .btn-management {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* 動畫定位 */
+.image-container {
+  position: relative;
+  height: 300px;
+  overflow: visible;
+}
+
+.bottom-right {
+  position: fixed;
+  height: 100px;
+  width: auto;
+  animation-duration: 3s;
+  bottom: 10px;
+  right: 20px;
+  z-index: 10;
+}
+
+.bottom-right1 {
+  position: fixed;
+  height: 100px;
+  width: auto;
+  animation-duration: 4s;
+  bottom: 10px;
+  right: 1px;
+  z-index: 5;
+}
+
+.left-top {
+  position: absolute;
+  height: 100px;
+  width: auto;
+  top: -160%;
+  left: -4%;
+  /* animation: slideInDown 3s forwards; */
+}
+
 #logobg {
-  margin-top: 20%;
   max-width: 100%;
-  height: 200px;
+  height: 300px;
   opacity: 0.5;
+  margin-top: 50px;
 }
 
 #logobg2 {
-  margin-top: -50px;
+  margin-top: -30px;
   margin-left: 50px;
   max-width: 100%;
-  height: 200px;
+  height: 300px;
   opacity: 0.5;
 }
 
@@ -301,4 +353,82 @@ div > .btn-management {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+div > marquee {
+  color: #a52a2a;
+  background-color: #ffe5a3;
+}
+
+div > .card {
+  border: 1px solid #ffcb48;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+}
+
+div > .card-header {
+  background-color: #ffcb48;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-group-item > span {
+  margin-left: 20px;
+}
+
+/* table.table thead th {
+  background-color: #ffcb48;
+} */
+
+.accordion-header-h > button {
+  background-color: #ffcb48;
+  padding: 5px;
+  margin-top: -15px;
+}
+
+/* 手風琴展開 */
+.accordion-header-h > button:not(.collapsed) {
+  background-color: #ff9800;
+  color: #fff;
+}
+
+#missionTable {
+  border: none;
+  background-color: #fff5e6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+#missionTable th,
+#missionTable td {
+  border: none;
+  text-align: center;
+}
+#missionTable th {
+  color: #fff;
+}
+.chat-icon {
+  font-size: 1.5rem;
+}
+div > .star-icon {
+  font-size: 1.5rem;
+  vertical-align: top; /* 將星星垂直對齊到頂部 */
+}
+div > #finishedbtn {
+  background-color: #ff6144;
+  margin-top: 10px;
+}
+div > #finishedbtn:hover {
+  background-color: #ff6144;
+  border: 1px solid #a52a2a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
