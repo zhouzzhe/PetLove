@@ -7,8 +7,6 @@ class FAQMain extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="position-relative mt-5">
-          <div className="position-relative my-5">&nbsp;</div>
           <div className="d-flex justify-content-center w-100 fs-2 py-5 ">
             常見問題
           </div>
@@ -127,11 +125,13 @@ class FAQMain extends Component {
 
           <div className="d-flex justify-content-center m-5 fs-3 align-items-center">
             <div className="text-danger">還有其他疑問嗎？歡迎</div>
-            <a href="/faq/form" className="btn btn-danger ms-3 fs-3 rounded-pill p-3">
+            <a
+              href="/faq/form"
+              className="btn btn-danger ms-3 fs-3 rounded-pill p-3"
+            >
               聯絡我們
             </a>
           </div>
-        </div>
       </React.Fragment>
     );
   }

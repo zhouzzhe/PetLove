@@ -56,11 +56,6 @@ const Score = () => {
       }
 
       document.getElementById("imageContainer").appendChild(imgElement);
-
-      window.onload = function () {
-        const sidebar = document.querySelector(".nav");
-        sidebar.classList.add("animate__animated", "animate__fadeInLeft");
-      };
     });
   }, []);
 
@@ -138,6 +133,7 @@ const Score = () => {
                         <td>13:00</td>
                         <td>2</td>
                         <td className="text-center">
+                          {/* <ChatDots color="royalblue" size={32} /> */}
                           <i className="bi bi-star chat-icon" />
                           <i className="bi bi-star chat-icon" />
                           <i className="bi bi-star chat-icon" />

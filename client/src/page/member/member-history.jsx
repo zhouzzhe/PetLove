@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import "../../style/member.css";
 
-const History = () => {
+function History() {
   const ColoredLine = ({ color }) => (
     <hr
       style={{
@@ -13,6 +13,25 @@ const History = () => {
       }}
     />
   );
+
+  const [orderDetails, setOrderDetails] = useState({
+    orderNumber: "#254",
+    orderDate: "2024-09-19",
+    logisticsStat: "配送中",
+    products: [
+      {
+        name: "貓用｜1種肉低敏無膠主食罐*2",
+        weight: "80g",
+        price: "NT200",
+        category: "雞肉",
+      },
+    ],
+    subtotal: "NT400",
+    deliveryMethod: "宅配",
+    discount: "NT50",
+    paymentMethod: "信用卡",
+    totalAmount: "NT350",
+  });
 
   useEffect(() => {
     const images = [
@@ -50,30 +69,10 @@ const History = () => {
         }, image.animationDuration);
       }
 
-      if (image.hoversrc && image.hoversrc.includes("sway.svg")) {
-        imgElement.addEventListener("click", () => {
-          const originalsrc = imgElement.src;
-          imgElement.src = "/svg/gototop.svg";
-
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-
-          setTimeout(() => {
-            imgElement.src = originalsrc;
-          }, 300);
-        });
-      }
-
       document.getElementById("imageContainer").appendChild(imgElement);
-
-      window.onload = function () {
-        const sidebar = document.querySelector(".nav");
-        sidebar.classList.add("animate__animated", "animate__fadeInLeft");
-      };
     });
   }, []);
+
   return (
     <React.Fragment>
       <div className="wrapper row">
@@ -89,9 +88,9 @@ const History = () => {
             </thead>
             <tbody>
               <tr>
-                <td id="orderNumber">#254</td>
-                <td id="orderDate">2024-09-19</td>
-                <td id="logisticsStat">配送中</td>
+                <td>{orderDetails.orderNumber}</td>
+                <td>{orderDetails.orderDate}</td>
+                <td>{orderDetails.logisticsStat}</td>
               </tr>
             </tbody>
           </table>
@@ -118,25 +117,30 @@ const History = () => {
                 <div className="accordion-body">
                   <table className="table table-borderless">
                     <tbody>
-                      <tr>
-                        {/* 產品名稱 */}
-                        <td colSpan={4} className="productName">
-                          貓用｜1種肉低敏無膠主食罐*2&nbsp;
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colSpan={4}>規格</td>
-                      </tr>
-                      <tr>
-                        {/* 自選規格 */}
-                        <td className="spec">80g</td>
-                        <td className="specPrice">NT200</td>
-                      </tr>
-                      <tr>
-                        {/* 口味 */}
-                        <td className="canFlavor">雞肉</td>
-                        <td />
-                      </tr>
+                      {orderDetails.products.map((product, index) => (
+                        <React.Fragment key={index}>
+                          <tr>
+                            <td colSpan={4} className="product_name">
+                              {product.name}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colSpan={4} className="product_specification">
+                              規格
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="product_weight">{product.weight}</td>
+                            <td className="product_price">{product.price}</td>
+                          </tr>
+                          <tr>
+                            <td className="product_category">
+                              {product.category}
+                            </td>
+                            <td />
+                          </tr>
+                        </React.Fragment>
+                      ))}
                     </tbody>
                   </table>
                   <ColoredLine color="ff6144" />
@@ -144,24 +148,34 @@ const History = () => {
                   <table className="table table-borderless">
                     <tbody>
                       <tr>
-                        <td>小計</td>
-                        <td className="subtotal" />
+                        <td colSpan={4}>小計</td>
+                        <td className="subtotal">{orderDetails.subtotal}</td>
                       </tr>
                       <tr>
-                        <td>配送方式</td>
-                        <td className="logistics" />
+                        <td colSpan={4}>配送方式</td>
+                        <td className="delivery_method">
+                          {orderDetails.deliveryMethod}
+                        </td>
                       </tr>
                       <tr>
-                        <td style={{ color: "#a52a2a" }}>折扣</td>
-                        <td className="discount" />
+                        <td colSpan={4} style={{ color: "#a52a2a" }}>
+                          折扣
+                        </td>
+                        <td className="discount" style={{ color: "#a52a2a" }}>
+                          {orderDetails.discount}
+                        </td>
                       </tr>
                       <tr>
-                        <td>付款方式</td>
-                        <td className="payment" />
+                        <td colSpan={4}>付款方式</td>
+                        <td className="payment_method">
+                          {orderDetails.paymentMethod}
+                        </td>
                       </tr>
                       <tr>
-                        <td>總計</td>
-                        <td className="total" />
+                        <td colSpan={4}>總計</td>
+                        <td className="total_amount">
+                          {orderDetails.totalAmount}
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -175,6 +189,6 @@ const History = () => {
       </div>
     </React.Fragment>
   );
-};
+}
 
 export default History;

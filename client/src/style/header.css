@@ -5,6 +5,20 @@ nav {
   li {
     list-style: none;
   }
+  .logoImg {
+    width: 150px;
+    padding-left: 50px;
+  }
+}
+
+.dropdown-menu {
+  border: 3px solid black;
+  width: fit-content;
+
+  .dropdown-item:hover {
+    /* border: 5px solid #ffcb48; */
+    background-color: #ffcb48;
+  }
 }
 
 .nav-link {
@@ -29,15 +43,4 @@ nav {
 
 .nav-link:active {
   color: #ff4f30;
-}
-
-.searchArea {
-  width: 120px;
-  border-radius: 50px;
-  border: 2px solid white;
-  margin-top: 10px;
-}
-
-.searchArea:focus {
-  width: 200px;
 }

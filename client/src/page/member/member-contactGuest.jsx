@@ -1,7 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../../style/member.css";
 
-const ContactGuest = () => {
+// 留言板
+function ContactGuest() {
+  const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState([]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log("Form submitted");
+    if (message) {
+      setMessages((prevMessages) => [...prevMessages, message]); // 消息列表
+      console.log("Submitted message:", message);
+      setMessage("");
+    } else {
+      console.log("No submit");
+    }
+  };
+
   const ColoredLine = ({ color }) => (
     <hr
       style={{
@@ -12,6 +28,10 @@ const ContactGuest = () => {
       }}
     />
   );
+
+  useEffect(() => {
+    console.log("Updated messages:", messages); // 每次 messages 更新時打印
+  }, [messages]);
 
   useEffect(() => {
     const images = [
@@ -49,34 +69,12 @@ const ContactGuest = () => {
         }, image.animationDuration);
       }
 
-      if (image.hoversrc && image.hoversrc.includes("sway.svg")) {
-        imgElement.addEventListener("click", () => {
-          const originalsrc = imgElement.src;
-          imgElement.src = "/svg/gototop.svg";
-
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-
-          setTimeout(() => {
-            imgElement.src = originalsrc;
-          }, 300);
-        });
-      }
-
       document.getElementById("imageContainer").appendChild(imgElement);
-
-      window.onload = function () {
-        const sidebar = document.querySelector(".nav");
-        sidebar.classList.add("animate__animated", "animate__fadeInLeft");
-      };
     });
   }, []);
 
   return (
     <React.Fragment>
-      {/* contact頁 */}
       <div>
         <div className="row">
           <div className="col">
@@ -92,7 +90,6 @@ const ContactGuest = () => {
               <div className="card-body">
                 <h6 className="card-text">訂單資訊</h6>
                 <ColoredLine color="ff6144" />
-                {/* 訂單資訊 */}
                 <ul className="list-group">
                   <li className="list-group-item">
                     1.日期與時間 <span id="orderDate">2024</span>
@@ -123,10 +120,16 @@ const ContactGuest = () => {
           {/* 這裡是留言板 */}
           <div className="col">
             <div className="container mt-5">
-              <form id="messageForm">
+              <form id="messageForm" onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label htmlFor="message">留言:</label>
-                  <textarea className="form-control" id="message" required />
+                  <textarea
+                    className="form-control message"
+                    id="message"
+                    required
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                  />
                 </div>
                 <br />
                 <button type="submit" className="btn btn-primary">
@@ -135,18 +138,23 @@ const ContactGuest = () => {
               </form>
               <br />
               <ColoredLine color="ff6144" />
-              <ul id="messageList" className="list-group" />
+              <ul id="messageList" className="list-group">
+                {messages.map((msg, index) => (
+                  <li key={index} className="list-group-item">
+                    {msg}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
       </div>
-      {/* 這是動畫 */}
       <div className="image-container" id="imageContainer"></div>
       <br />
       <br />
       <br />
     </React.Fragment>
   );
-};
+}
 
 export default ContactGuest;

@@ -3,7 +3,7 @@ import axios from "axios";
 import { DatePicker } from "@douyinfe/semi-ui";
 
 function FAQFrom(prop) {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
   const [applicationTime, setApplicationTime] = useState();
   const formattedApplicationTime = new Date(
@@ -48,8 +48,12 @@ function FAQFrom(prop) {
 
     try {
       const response = await axios.post(
-        ``
-      )
+        `http://localhost:8000/faq/form`,
+        inputData
+      );
+      console.log(response);
+    } catch (error) {
+      console.log("Error submitting form:", error);
     }
   };
 

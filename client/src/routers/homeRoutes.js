@@ -1,19 +1,16 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import homeMain from "../page/home/home.jsx";
+import HomeMain from "../page/home/home.jsx";
 
-class FaqRoutes extends Component {
+class HomeRoutes extends Component {
   state = {};
   render() {
     return (
       <Switch>
-        <Route path="/" exact>
-          <Redirect to="/home" />
-        </Route>
-        <Route path="/home" component={homeMain} exact />
+        <Route path="/home" component={HomeMain} exact />
       </Switch>
     );
   }
 }
 
-export default FaqRoutes;
+export default HomeRoutes;

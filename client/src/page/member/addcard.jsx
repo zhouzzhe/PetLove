@@ -1,8 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import "../../style/member.css";
+import axios from "axios";
 
-const CardAdd = () => {
+function CardAdd() {
+  const [cardName, setCardName] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [newCard, setnewCard] = useState([]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const newCard = {
+      card_number: cardNumber,
+      card_name: cardName,
+    };
+    console.log(newCard);
+
+    // try {
+    //   const response = await axios.post(`http://localhost:8000/`, newCard);
+    //   console.log(response);
+    //   setCardName("");
+    //   setCardNumber("");
+    // } catch (error) {
+    //   console.log("Error submitting form:", error);
+    // }
+  };
+
   const ColoredLine = ({ color }) => (
     <hr
       style={{
@@ -13,6 +37,7 @@ const CardAdd = () => {
       }}
     />
   );
+
   useEffect(() => {
     const images = [
       {
@@ -66,13 +91,9 @@ const CardAdd = () => {
       }
 
       document.getElementById("imageContainer").appendChild(imgElement);
-
-      window.onload = function () {
-        const sidebar = document.querySelector(".nav");
-        sidebar.classList.add("animate__animated", "animate__fadeInLeft");
-      };
     });
   }, []);
+
   return (
     <React.Fragment>
       <div className="wrapper row">
@@ -81,19 +102,33 @@ const CardAdd = () => {
           <div>
             <h5>新增付款方式</h5>
             <ColoredLine color="ff6144" />
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label htmlFor="userCard" className="form-label">
                   信用卡
                 </label>
-                <input type="text" className="form-control" id="userCard" />
+                <input
+                  type="text"
+                  className="form-control"
+                  id="card_number"
+                  value={cardNumber}
+                  onChange={(e) => setCardNumber(e.target.value)}
+                  required
+                />
                 <div id="userCard" className="form-text"></div>
               </div>
               <div className="mb-3">
                 <label htmlFor="userName" className="form-label">
                   持卡人姓名
                 </label>
-                <input type="text" className="form-control" id="userName" />
+                <input
+                  type="text"
+                  className="form-control"
+                  id="card_name"
+                  value={cardName}
+                  onChange={(e) => setCardName(e.target.value)}
+                  required
+                />
               </div>
               <button
                 type="submit"
@@ -103,6 +138,7 @@ const CardAdd = () => {
                 新增付款方式
               </button>
             </form>
+
             {/* 這是動畫 */}
             <div className="image-container" id="imageContainer"></div>
           </div>
@@ -110,6 +146,6 @@ const CardAdd = () => {
       </div>
     </React.Fragment>
   );
-};
+}
 
 export default CardAdd;

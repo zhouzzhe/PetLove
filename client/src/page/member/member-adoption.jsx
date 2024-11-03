@@ -67,12 +67,9 @@ const Adoption = () => {
 
       document.getElementById("imageContainer").appendChild(imgElement);
 
-      window.onload = function () {
-        const sidebar = document.querySelector(".nav");
-        sidebar.classList.add("animate__animated", "animate__fadeInLeft");
-      };
     });
   }, []);
+
   return (
     <React.Fragment>
       {/* 置入sidebar */}

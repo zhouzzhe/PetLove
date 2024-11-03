@@ -91,7 +91,6 @@ const ContactNanny = () => {
               </div>
               <div className="card-body">
                 <h6 className="card-text">訂單資訊</h6>
-                <ColoredLine color="ff6144" />
                 {/* 訂單資訊 */}
                 <ul className="list-group">
                   <li className="list-group-item">

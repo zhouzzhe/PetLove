@@ -10,10 +10,7 @@ class AdoptRoutes extends Component {
   render() {
     return (
       <Switch>
-        <Route path="/adopt" exact>
-          <Redirect to="/adopt/page=1" />
-        </Route>
-        <Route path="/adopt/page=:page([0-9]+)" component={AdoptMain} exact/>
+        <Route path="/adopt" component={AdoptMain} exact/>
         <Route path="/adopt/info/item=:item([0-9]+)" component={AdoptInfo} exact/>
         <Route path="/adopt/form" component={AdoptForm} />
       </Switch>

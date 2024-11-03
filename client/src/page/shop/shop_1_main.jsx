@@ -29,7 +29,7 @@ class Shop extends Component {
 
     render() {
         return (
-            <body className='bodyMargin'>
+            <body className='bodyMargin position-relative'>
                 <div className='d-flex'>
                     <div className="leftBar sticky-top">
                         <ul>

@@ -1,29 +1,31 @@
 footer {
-  margin-top: 300px;
+  margin-top: 500px;
   background-color: #ffcb48;
   border-radius: 100px 100px 0 0;
   width: 100%;
-  height: 1200px;
-}
+  height: 1100px;
 
-footer ul {
-  list-style-type: none;
-  width: 200px;
-  height: 300px;
-  text-align: center;
-  white-space: nowrap;
-}
+  ul {
+    list-style-type: none;
+    width: 200px;
+    height: 300px;
+    text-align: center;
+    white-space: nowrap;
+  }
 
-footer ul a {
-  text-decoration: none;
-  color: black;
-}
+  ul a {
+    text-decoration: none;
+    color: black;
+  }
 
-footer ul li:first-child {
-  font-size: 20px;
-  font-weight: 900;
+  ul li:first-child {
+    font-size: 20px;
+    font-weight: 900;
+  }
+  .footerLogoBox {
+    height: 50%;
+    img {
+      width: 60%;
+    }
+  }
 }
-
-/* footer div .box {
-  padding-top: 700px;
-} */

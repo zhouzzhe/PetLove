@@ -6,14 +6,14 @@ class Footer extends Component {
   render() {
     return (
       <React.Fragment>
-        <footer className="row">
+        <footer className="row mx-0">
           <div className="col-12 d-flex justify-content-center align-items-center">
-            <a href="/home" className="">
+            <a href="/home" className="d-flex justify-content-center">
               <img
-                className="border border-5"
+                className=""
                 src="/image/logo.png"
                 alt="...loading"
-                style={{ width: "532px", height: "411px" }}
+                style={{ width: "50%"}}
               ></img>
             </a>
           </div>
@@ -21,51 +21,51 @@ class Footer extends Component {
           <div className="col-12 row">
             <div className="col row box">
               <ul className="d-grid">
-                <li className="col mb-auto">服務項目</li>
+                <li className="col mb-auto user-select-none">服務項目</li>
                 <li className="col mb-auto">
-                  <a href="#">寵物代遛</a>
+                  <a href="/walking">寵物代遛</a>
                 </li>
                 <li className="col mb-auto">
-                  <a href="">寵物保母</a>
+                  <a href="/nanny">寵物保母</a>
                 </li>
                 <li className="col mb-auto">
-                  <a href="">毛孩領養</a>
+                  <a href="/adopt">毛孩領養</a>
                 </li>
               </ul>
             </div>
 
             <div className="col row box">
               <ul className="d-grid">
-                <li className="col mb-auto">商品一覽</li>
+                <li className="col mb-auto user-select-none">商品一覽</li>
                 <li className="col mb-auto">
-                  <a href="">乾飼料</a>
+                  <a href="/shop">乾飼料</a>
                 </li>
                 <li className="col mb-auto">
-                  <a href="">罐頭</a>
+                  <a href="/shop">罐頭</a>
                 </li>
                 <li className="col mb-auto">
-                  <a href="">零食</a>
+                  <a href="/shop">零食</a>
                 </li>
                 <li className="col mb-auto">
-                  <a href="">其他用品</a>
+                  <a href="/shop">其他用品</a>
                 </li>
-                <li className="col mb-auto">
-                  <a href="">查看更多</a>
-                </li>
+                {/* <li className="col mb-auto">
+                  <a href="/shop">查看更多</a>
+                </li> */}
               </ul>
             </div>
 
-            <div className="col row box">
+            <div className="col row box user-select-none">
               <ul className="d-grid">
                 <li className="col mb-auto">聯絡我們</li>
                 <li className="col mb-auto">
-                  <a href="">04-2326-5860</a>
+                  <p>04-2326-5860</p>
                 </li>
                 <li className="col mb-auto">
-                  <a href="">10:00 - 22:00</a>
+                  <p>10:00 - 22:00</p>
                 </li>
                 <li className="col mb-auto">
-                  <a href="">petlove@gmail.com</a>
+                  <p>petlove@gmail.com</p>
                 </li>
               </ul>
             </div>

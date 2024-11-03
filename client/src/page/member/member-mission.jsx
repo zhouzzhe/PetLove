@@ -66,11 +66,6 @@ const Mission = () => {
       }
 
       document.getElementById("imageContainer").appendChild(imgElement);
-
-      window.onload = function () {
-        const sidebar = document.querySelector(".nav");
-        sidebar.classList.add("animate__animated", "animate__fadeInLeft");
-      };
     });
   }, []);
 
@@ -95,12 +90,15 @@ const Mission = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td>2024</td>
-                  <td>13:00</td>
-                  <td>2</td>
+                  <td className="ComingDate">2024</td>
+                  <td className="period">13:00</td>
+                  <td className="times">2</td>
                   <td className="text-center">
-                    <a href="./member-contactGuest.html">
-                      <i className="bi bi-chat-dots chat-icon" />
+                    <a href="/member/contact-guest">
+                      <i
+                        className="bi bi-chat-dots chat-icon"
+                        style={{ fontSize: " 2rem", color: "black" }}
+                      />
                     </a>
                   </td>
                 </tr>
@@ -119,64 +117,25 @@ const Mission = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td>2024</td>
-                  <td>13:00</td>
-                  <td>2</td>
-                  <td className="text-center">
-                    <i className="bi bi-star chat-icon" />
-                    <i className="bi bi-star chat-icon" />
-                    <i className="bi bi-star chat-icon" />
-                    <i className="bi bi-star chat-icon" />
-                    <i className="bi bi-star chat-icon" />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>日期</th>
-                  <th>期間</th>
-                  <th>次數</th>
-                  <th className="text-center">評價</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>2024</td>
-                  <td>13:00</td>
-                  <td>2</td>
-                  <td className="text-center">
-                    <i className="bi bi-star chat-icon" />
-                    <i className="bi bi-star chat-icon" />
-                    <i className="bi bi-star chat-icon" />
-                    <i className="bi bi-star chat-icon" />
-                    <i className="bi bi-star chat-icon" />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            {/* 已完成3 */}
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>日期</th>
-                  <th>期間</th>
-                  <th>次數</th>
-                  <th className="text-center">評價</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>2024</td>
-                  <td>13:00</td>
-                  <td>2</td>
-                  <td className="text-center">
-                    <i className="bi bi-star chat-icon" />
-                    <i className="bi bi-star chat-icon" />
-                    <i className="bi bi-star chat-icon" />
-                    <i className="bi bi-star chat-icon" />
-                    <i className="bi bi-star chat-icon" />
+                  <td className="finishDate">2024</td>
+                  <td className="period">13:00</td>
+                  <td className="times">2</td>
+                  <td className="text-center rating">
+                    <span class="star" data-value="1">
+                      ★
+                    </span>
+                    <span class="star" data-value="2">
+                      ★
+                    </span>
+                    <span class="star" data-value="3">
+                      ★
+                    </span>
+                    <span class="star" data-value="4">
+                      ★
+                    </span>
+                    <span class="star" data-value="5">
+                      ★
+                    </span>
                   </td>
                 </tr>
               </tbody>

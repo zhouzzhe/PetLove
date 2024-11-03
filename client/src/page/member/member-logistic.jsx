@@ -73,9 +73,9 @@ const Logistic = () => {
               <a href="" className="btn" id="userAdress">
                 新增常用地址
               </a>
-              <a href="" className="btn" id="userStore">
+              {/* <a href="" className="btn" id="userStore">
                 新增常用超商
-              </a>
+              </a> */}
             </div>
             {/* 這是動畫 */}
             <div className="image-container" id="imageContainer"></div>
