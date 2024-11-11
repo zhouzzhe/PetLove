@@ -1,12 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "animate.css";
+import axios from "axios";
+
+const handleLogout = () => {
+  localStorage.removeItem("myUserIDDD");
+  console.log("已登出，localStorage 已清除");
+  window.location.href = "/login"; // 根據您的路由調整
+};
 
 function Sidebar() {
+  const [userName, setUserName] = useState([]);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const userId = localStorage.getItem("myUserIDDD");
+    console.log("使用的 userId:", userId); // 輸出使用的 userId
+
+    if (userId) {
+      fetch(`http://localhost:8000/member/api/user/${userId}`)
+        .then((response) => {
+          console.log("API 響應狀態:", response.status);
+          return response.json();
+        })
+        .then((data) => {
+          console.log("獲取的用戶資料:", data); // 輸出獲取的用戶資料
+          if (data) {
+            setUserName(data[0].user_name); // 設置用戶名
+          } else {
+            console.error("未找到用戶名");
+            setError("未找到用戶名");
+          }
+        });
+      console.log(userName);
+    } else {
+      console.error("未提供用戶 ID");
+      setError("未提供用戶 ID");
+    }
+  }, []);
+
   return (
     <React.Fragment>
       <div
         className="col-md-2 animate__animated animate__fadeInLeft"
         aria-label="Left Sidebar"
+        // style={{ width: "250px" }} // 設定您想要的寬度
       >
         <div className="userInfo">
           <img
@@ -19,7 +56,7 @@ function Sidebar() {
               href="/member/userpage"
               style={{ textDecoration: "none", color: "black" }}
             >
-              愛遛狗小姐姐
+              {userName} {/* 直接顯示用戶名 */}
             </a>
           </span>
         </div>
@@ -61,7 +98,7 @@ function Sidebar() {
                 <div className="accordion-body">
                   <ul>
                     <li>
-                      <a href="/member/userinfo" className="btn">
+                      <a href="/member/userinfo" className="btn" >
                         更改基本資料
                       </a>
                     </li>
@@ -94,7 +131,7 @@ function Sidebar() {
           <a href="/member/join-us">
             <span>加入我們</span>
           </a>
-          <a>
+          <a onClick={handleLogout} style={{ cursor: "pointer" }}>
             <span style={{ color: "#a52a2a" }}>登出</span>
           </a>
         </div>

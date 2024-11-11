@@ -1,4 +1,4 @@
-body {
+/* body {
   background-color: #fffdfa;
   margin-top: 100px;
   width: 100%;
@@ -6,12 +6,12 @@ body {
   justify-content: center;
   align-items: center;
   padding-bottom: 300px;
-}
+} */
 
 .box {
   border: 2px solid #ffcb48;
   width: 60%;
-  height: 1000px;
+  /* height: 1000px; */
 }
 
 .box .headLine {
@@ -49,7 +49,7 @@ body {
   flex-direction: column;
 
   p:first-child {
-    margin-top: 50px;
+    /* margin-top: 50px; */
     font-size: 25px;
   }
 

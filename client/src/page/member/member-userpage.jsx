@@ -1,14 +1,37 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import "../../style/member.css";
+import axios from "axios";
 
 function UserPage() {
+  const [userinfoData, setUserinfoData] = useState([]);
+  const [jobsettingData, setJobsetting] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const userId = localStorage.getItem("myUserIDDD");
+      const result = await axios.get(`http://localhost:8000/member/userpage-userinfo/${userId}`);
+      setUserinfoData(result.data);
+    };
+    getData();
+  }, []);
+
+  useEffect(() => {
+    const getsetting = async () => {
+      const userId = localStorage.getItem("myUserIDDD");
+      const result = await axios.get(`http://localhost:8000/member/userpage-jobsetting/${userId}`);
+      setJobsetting(result.data);
+      console.log(result.data);
+    };
+    getsetting();
+  }, []);
+
+
   const [Job, setJob] = useState({
     userName: "",
     userPhone: "",
     userEmail: "",
   });
-
   useEffect(() => {
     const tabs = document.querySelectorAll(".nav-link");
 
@@ -116,46 +139,48 @@ function UserPage() {
               tabIndex={0}
             >
               <table className="table" style={{ marginTop: "20px" }}>
-                <tbody>
-                  <tr>
-                    <td
-                      style={{
-                        backgroundColor: "#ffcb48",
-                        width: "100px",
-                        borderRadius: "25px 0 0 0",
-                        textAlign: "center",
-                      }}
-                    >
-                      姓名
-                    </td>
-                    <td id="userName">愛遛狗小姊姊</td>
-                  </tr>
-                  <tr>
-                    <td
-                      style={{
-                        backgroundColor: "#ffcb48",
-                        width: "100px",
-                        textAlign: "center",
-                      }}
-                    >
-                      電話
-                    </td>
-                    <td id="userPhone">0921212122</td>
-                  </tr>
-                  <tr>
-                    <td
-                      style={{
-                        backgroundColor: "#ffcb48",
-                        width: "100px",
-                        borderRadius: "0 0 0 25px",
-                        textAlign: "center",
-                      }}
-                    >
-                      Email
-                    </td>
-                    <td id="userEmail">123@gmail</td>
-                  </tr>
-                </tbody>
+                {userinfoData.map((Item) => (
+                  <tbody>
+                    <tr>
+                      <td
+                        style={{
+                          backgroundColor: "#ffcb48",
+                          width: "100px",
+                          borderRadius: "25px 0 0 0",
+                          textAlign: "center",
+                        }}
+                      >
+                        姓名
+                      </td>
+                      <td id="userName">{Item.user_name}</td>
+                    </tr>
+                    <tr>
+                      <td
+                        style={{
+                          backgroundColor: "#ffcb48",
+                          width: "100px",
+                          textAlign: "center",
+                        }}
+                      >
+                        電話
+                      </td>
+                      <td id="userPhone">{Item.user_phone}</td>
+                    </tr>
+                    <tr>
+                      <td
+                        style={{
+                          backgroundColor: "#ffcb48",
+                          width: "100px",
+                          borderRadius: "0 0 0 25px",
+                          textAlign: "center",
+                        }}
+                      >
+                        Email
+                      </td>
+                      <td id="userEmail">{Item.user_mail}</td>
+                    </tr>
+                  </tbody>
+                ))}
               </table>
             </div>
             {/* 工作設定 */}
@@ -175,54 +200,59 @@ function UserPage() {
                 >
                   自我介紹
                 </div>
-                <div className="card-body">
-                  <p className="card-text" id="selfIntro" />
-                </div>
+                {jobsettingData.map((Item1) => (
+                  <div className="card-body">
+                    <p className="card-text" id="selfIntro" />
+                    {Item1.jobsetting_introduce}
+                  </div>
+                ))}
               </div>
               <br />
               {/* 可服務時間和地區 */}
-              <table className="table" style={{ borderRadius: "10px" }}>
-                <thead>
-                  <tr>
-                    <th scope="col" style={{ backgroundColor: "#ffcb48" }}>
-                      可接受寵物
-                    </th>
-                    <th scope="col" style={{ backgroundColor: "#ffcb48" }}>
-                      可服務時間
-                    </th>
-                    <th scope="col" style={{ backgroundColor: "#ffcb48" }}>
-                      可服務地區
-                    </th>
-                    <th scope="col" style={{ backgroundColor: "#ffcb48" }}>
-                      可接受體型
-                    </th>
-                    <th scope="col" style={{ backgroundColor: "#ffcb48" }}>
-                      所在地區
-                    </th>
-                    <th scope="col" style={{ backgroundColor: "#ffcb48" }}>
-                      價格
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>犬</td>
-                    <td>一,三,五</td>
-                    <td>南屯區,太平區</td>
-                    <td>五公斤以下</td>
-                    <td>台中市南屯區公益路</td>
-                    <td>TWD 300/ 次</td>
-                  </tr>
-                </tbody>
-              </table>
+              {jobsettingData.map((Item1) => (
+                <table className="table" style={{ borderRadius: "10px" }}>
+                  <thead>
+                    <tr>
+                      <th scope="col" style={{ backgroundColor: "#ffcb48" }}>
+                        可接受寵物
+                      </th>
+                      <th scope="col" style={{ backgroundColor: "#ffcb48" }}>
+                        可服務時間
+                      </th>
+                      <th scope="col" style={{ backgroundColor: "#ffcb48" }}>
+                        可服務地區
+                      </th>
+                      <th scope="col" style={{ backgroundColor: "#ffcb48" }}>
+                        可接受體型
+                      </th>
+                      <th scope="col" style={{ backgroundColor: "#ffcb48" }}>
+                        所在地區
+                      </th>
+                      <th scope="col" style={{ backgroundColor: "#ffcb48" }}>
+                        價格
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{Item1.jobsetting_dogCat}</td>
+                      <td>{Item1.jobsetting_week}</td>
+                      <td>{Item1.jobsetting_area}</td>
+                      <td>{Item1.jobsetting_petSize}</td>
+                      <td>{Item1.jobsetting_area}</td>
+                      <td>{Item1.jobsetting_price}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              ))}
               <br />
               {/* slide */}
               <h6>照片專區</h6>
               <div className="scroll-container">
                 <img src="/image/girl with dog.jpg" alt="" />
-                <img src="/image/girl with dog.jpg" alt="" />
-                <img src="/image/girl with dog.jpg" alt="" />
-                <img src="/image/girl with dog.jpg" alt="" />
+                <img src="/image/petAndNanny4 (1).jpg" alt="" />
+                <img src="/image/petAndNanny5 (1).jpg" alt="" />
+                <img src="/image/petAndNanny6 (1).jpg" alt="" />
               </div>
             </div>
           </div>

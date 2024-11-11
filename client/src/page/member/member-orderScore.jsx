@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
 import "../../style/member.css";
+import axios from "axios";
 
 const Score = () => {
   useEffect(() => {

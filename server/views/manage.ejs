@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>寵樂-後臺系統</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    <!-- <link
+      rel="icon"
+      href="img/kaiadmin/favicon.ico"
+      type="image/x-icon"
+    /> -->
+    <!-- Fonts and icons -->
+    <script src="/media/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+        WebFont.load({
+            google: { families: ["Public Sans:300,400,500,600,700"] },
+            custom: {
+                families: [
+                    "Font Awesome 5 Solid",
+                    "Font Awesome 5 Regular",
+                    "Font Awesome 5 Brands",
+                    "simple-line-icons",
+                ],
+                urls: ["css/fonts.min.css"],
+            },
+            active: function () {
+                sessionStorage.fonts = true;
+            },
+        });
+    </script>
+
+    <!-- CSS Files -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/media/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/media/css/plugins.css" />
+    <link rel="stylesheet" href="/media/css/kaiadmin.css" />
+
+</head>
+
+<body>
+    <%- include('navbar') %>
+        <div class="container">
+            <div class="page-inner">
+                <div class="page-header">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">產品上架</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4">
+                                        <form action="/addProduct" method="post" enctype="multipart/form-data" id="form">
+                                            <div class="form-group">
+                                                <label for="largeInput">產品名稱</label>
+                                                <input type="text" class="form-control form-control" id="productName"
+                                                    placeholder="請輸入產品名稱" name="productName"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="largeInput">產品規格</label>
+                                                <input type="text" class="form-control form-control" id="productSpec"
+                                                    placeholder="請輸入產品規格" name="productSpec"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="largeInput">產品口味</label>
+                                                <input type="text" class="form-control form-control" id="productTaste"
+                                                    placeholder="請輸入產品口味" name="productTaste"/>
+                                            </div>
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlSelect1">產品類型</label>
+                                                    <select class="form-select" id="exampleFormControlSelect1" name="productType">
+                                                        <option>狗飼料</option>
+                                                        <option>貓飼料</option>
+                                                        <option>貓玩具</option>
+                                                        <option>狗玩具</option>
+                                                        <option>貓零食</option>
+                                                        <option>狗零食</option>
+                                                        <option>寵物窩</option>
+                                                        <option>其他用品</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="productImgFile">上傳圖片</label>
+                                                    <input type="file" class="form-control-file"
+                                                    id="productImgFile" name="productImg"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="comment">介紹內容</label>
+                                                    <textarea class="form-control" id="comment" rows="5" name="introduction"></textarea>
+                                                </div>
+                                            <div class="form-group">
+                                                <label for="largeInput">庫存量</label>
+                                                <input type="number" class="form-control form-control" id="Stock" name="stock" value="999"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="largeInput">產品價格</label>
+                                                <input type="text" class="form-control form-control" id="productPrice" name="price"/>
+                                            </div>
+                                            <div class="card-action">
+                                                <button class="btn btn-success" id="submit">Submit</button>
+                                                <button class="btn btn-danger">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%- include('footer.ejs') %>
+
+            <script>
+                $('#submit').on('click',function(event){
+                    event.preventDefault();
+                    // 將表單元素轉為 FormData 物件
+                    var formData = new FormData($('#form')[0]);
+
+                    //ajax請求
+                    $.ajax({
+                        url:"/admin/addProduct",
+                        type:'POST',
+                        data:formData,
+                        contentType: false,// 不要設置內容類型，這樣會自動設置正確的內容類型
+                        processData:false,
+                        success: function(res){
+                            var res = JSON.parse(res)
+                            if (res.errno === 1) {
+                                alert('新增成功')
+                                window.location.href = '/manage'
+                            }else if (res.errno === 0){
+                                alert('新增失敗')
+                            }
+                        },error:function(){
+                            alert('系統錯誤')
+                        }
+                    })
+                    location.reload()
+                })
+
+
+                //DATA array 處理成JSON
+                function serializeToJSON(data){
+                    var value = {};
+                    for(index in data){
+                        value[data[index].name] = data[index].value;
+                    }
+                    return JSON.stringify(value)
+                }
+            </script>
+</body>
+
+</html>

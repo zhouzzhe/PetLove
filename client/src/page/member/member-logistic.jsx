@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
 import "../../style/member.css";
+import axios from "axios";
 
 const Logistic = () => {
   useEffect(() => {
@@ -56,11 +57,6 @@ const Logistic = () => {
       }
 
       document.getElementById("imageContainer").appendChild(imgElement);
-
-      window.onload = function () {
-        const sidebar = document.querySelector(".nav");
-        sidebar.classList.add("animate__animated", "animate__fadeInLeft");
-      };
     });
   }, []);
   return (
@@ -70,7 +66,7 @@ const Logistic = () => {
         <main className="col-md-10">
           <div>
             <div>
-              <a href="" className="btn" id="userAdress">
+              <a href="http://localhost:3000/member/address" className="btn" id="userAdress">
                 新增常用地址
               </a>
               {/* <a href="" className="btn" id="userStore">

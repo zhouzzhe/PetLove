@@ -93,21 +93,21 @@
     width: 150px;
     position: absolute;
     right: 50px;
-    top: 3300px;
+    top: 3550px;
     z-index: 100;
   }
 }
 
-/* .logoBox {
+.logoBox2 {
   width: 100vw;
-  height: 1500px;
+  height: 100vh;
   background-color: rgb(255, 255, 255);
   z-index: -10;
   img {
-    scale: 0.3;
+    scale: 0.4;
     transition: transform 0s;
   }
-} */
+}
 
 /* 跑馬字串0 */
 .marquee0-container {
@@ -141,13 +141,13 @@
 /* 跑馬字串0 */
 
 /* 跑馬字串1 */
-.marquee1-container {
+.marquee10-container {
   margin: 50px 0;
   width: 100%;
   overflow: hidden;
   display: flex;
 
-  .marquee1 {
+  .marquee10 {
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
@@ -222,7 +222,7 @@ hr {
 }
 
 .section {
-  margin: 200px 0;
+  margin: 300px 0;
   height: 400px;
 
   .title {

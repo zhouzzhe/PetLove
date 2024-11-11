@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import "../../style/member.css";
+import axios from "axios";
 
 function BecomeWalker() {
   const [formData, setFormData] = useState({

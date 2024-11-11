@@ -1,20 +1,48 @@
 import React, { useEffect, useState } from "react";
 import "../../style/member.css";
+import axios from "axios";
 
 // 留言板
 function ContactGuest() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const [missionData, setMissionData] = useState([]);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    console.log("Form submitted");
-    if (message) {
-      setMessages((prevMessages) => [...prevMessages, message]); // 消息列表
-      console.log("Submitted message:", message);
-      setMessage("");
-    } else {
-      console.log("No submit");
+  useEffect(() => {
+    const getData = async () => {
+      const userId = localStorage.getItem("myUserIDDD");
+      const result = await axios.get(`http://localhost:8000/member/contact-guest/${userId}`);
+      setMissionData(result.data);
+    };
+    getData();
+  }, []);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString(); // 根據需要調整格式
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const userId = localStorage.getItem("myUserIDDD"); // 獲取 userId
+    const inputData = { nanny_message: message };
+
+    try {
+      // 發送請求更新留言，將 userId 和 inputData 一起傳送
+      await axios.post(`http://localhost:8000/member/contact-guest/update/${userId}`, inputData);
+
+      // 更新 missionData 中的留言
+      setMissionData(prevData => 
+        prevData.map(item => ({
+          ...item,
+          nanny_message: message // 更新 "其他要求" 為當前的留言
+        }))
+      );
+
+      setMessage(""); // 提交成功後清空留言框
+      console.log("留言已成功更新");
+    } catch (error) {
+      console.error("更新留言失敗", error);
     }
   };
 
@@ -85,34 +113,38 @@ function ContactGuest() {
                   alt=""
                   className="circle-image"
                 />
-                <span id="nannyName">客戶名字</span>
+                {missionData.map((Item) => (
+                  <span id="nannyName">客戶名稱:&nbsp;&nbsp;{Item.owner_name}</span>
+                ))}
               </div>
               <div className="card-body">
                 <h6 className="card-text">訂單資訊</h6>
                 <ColoredLine color="ff6144" />
-                <ul className="list-group">
-                  <li className="list-group-item">
-                    1.日期與時間 <span id="orderDate">2024</span>
-                  </li>
-                  <li className="list-group-item">
-                    2.服務時間(30分鐘一節) <span id="orderTime">30min</span>
-                  </li>
-                  <li className="list-group-item">
-                    3.頻率 <span id="orderFrequency">一天一次</span>
-                  </li>
-                  <li className="list-group-item">
-                    4.所需天數 <span id="neededDay">2天</span>
-                  </li>
-                  <li className="list-group-item">
-                    5.地點 <span id="orderLocation">台中市南屯區</span>
-                  </li>
-                  <li className="list-group-item">
-                    其他要求(選填) <span id="otherDemand">散步喝水</span>
-                  </li>
-                  <li className="list-group-item" id="orderNumber">
-                    訂單編號#789
-                  </li>
-                </ul>
+                {missionData.map((Item) => (
+                  <ul className="list-group" key={Item.nanny_order}>
+                    <li className="list-group-item">
+                      1.日期與時間 <span id="orderDate">{formatDate(Item.date)}&nbsp;&nbsp;&nbsp;{Item.time}</span>
+                    </li>
+                    <li className="list-group-item">
+                      2.服務時間(30分鐘一節) <span id="orderTime">{Item.frequency}</span>
+                    </li>
+                    <li className="list-group-item">
+                      3.頻率 <span id="orderFrequency">一天{Item.service_sessions}次</span>
+                    </li>
+                    <li className="list-group-item">
+                      4.所需天數 <span id="neededDay">{Item.required_days}天</span>
+                    </li>
+                    <li className="list-group-item">
+                      5.地點 <span id="orderLocation">{Item.service_location}</span>
+                    </li>
+                    <li className="list-group-item">
+                      其他要求(選填) <span id="otherDemand">{Item.nanny_message}</span>
+                    </li>
+                    <li className="list-group-item" id="orderNumber">
+                      訂單編號{Item.nanny_order}
+                    </li>
+                  </ul>
+                ))}
               </div>
             </div>
           </div>

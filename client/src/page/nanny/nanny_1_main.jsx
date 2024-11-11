@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../style/nanny_1_main.css";
+import { DatePicker } from "@douyinfe/semi-ui";
 
 function NannyMain(prop) {
   const [data, setData] = useState([
@@ -11,6 +12,21 @@ function NannyMain(prop) {
       user_price: "5880",
     },
   ]);
+
+  const [petType, setPetType] = useState("");
+  const typeButtonHandle = (event) => {
+    // console.log(event.target.value);
+    setPetType(event.target.value);
+  };
+  const [nannySex, setNannySex] = useState("");
+  const sexButtonHandle = (event) => {
+    // console.log(event.target.value);
+    setNannySex(event.target.value);
+  };
+
+
+
+
 
   const fetchData = async () => {
     try {
@@ -29,57 +45,134 @@ function NannyMain(prop) {
   return (
     <React.Fragment>
       {/* 尋找寵物保母表單 */}
-      <h2 className="fw-bold fs-2 text-center my-5">尋找寵物保母</h2>
-      <div className="searchNannyFormDiv">
-        <form action className="searchNannyForm col-10">
-          <div className="NannyFormOption">
-            <select className="selectCity">
-              <option>台中市</option>
-            </select>
-            <select className="selectCity">
-              <option>西屯區</option>
-            </select>
+      <h2 className="fw-bold fs-2 text-center mb-5">尋找寵物保母</h2>
+      <form id="submit">
+        <div className="searchNannyFormDiv">
+          <div className="searchNannyForm col-10">
+          <p className="gender">所在地區</p>
+            <div className="NannyFormOption">
+              <select className="selectCity">
+                <option>台中市</option>
+              </select>
+              <select className="selectCity">
+                <option>西屯區</option>
+              </select>
+            </div>
+            <p className="gender">寵物類型</p>
+            <div className="NannyFormOption">
+              <input
+                type="radio"
+                className="btn-check"
+                name="petType"
+                id="dogButton"
+                autoComplete="off"
+                value={"狗"}
+                onClick={typeButtonHandle}
+              ></input>
+              <label
+                className="btn custom-button btn-outline-warning"
+                htmlFor="dogButton"
+              >
+                小狗狗
+              </label>
+              <input
+                type="radio"
+                className="btn-check"
+                name="petType"
+                id="catButton"
+                autoComplete="off"
+                value={"貓"}
+                onClick={typeButtonHandle}
+              ></input>
+              <label
+                className="btn custom-button btn-outline-warning"
+                htmlFor="catButton"
+              >
+                小貓貓
+              </label>{" "}
+            </div>
+            <p className="gender">保母性別</p>
+            <div className="NannyFormOption">
+              <input
+                type="radio"
+                className="btn-check"
+                name="nannySex"
+                id="boyButton"
+                autoComplete="off"
+                value={"男"}
+                onClick={sexButtonHandle}
+              ></input>
+              <label
+                className="btn custom-button btn-outline-warning"
+                htmlFor="boyButton"
+              >
+                男
+              </label>
+              <input
+                type="radio"
+                className="btn-check"
+                name="nannySex"
+                id="girlButton"
+                autoComplete="off"
+                value={"女"}
+                onClick={sexButtonHandle}
+              ></input>
+              <label
+                className="btn custom-button btn-outline-warning"
+                htmlFor="girlButton"
+              >
+                女
+              </label>
+              <input
+                type="radio"
+                className="btn-check"
+                name="nannySex"
+                id="allButton"
+                autoComplete="off"
+                value={"不限"}
+                onClick={sexButtonHandle}
+              ></input>
+              <label
+                className="btn custom-button btn-outline-warning"
+                htmlFor="allButton"
+              >
+                不限
+              </label>{" "}
+            </div>
+            <p className="reservation">預約日期</p>
+            <div className="NannyFormOption">
+              <div className="d-flex align-items-center gap-5">
+                <DatePicker
+                  className=" w-100 border border-1 rounded-3"
+                  placeholder="請選擇日期"
+                  insetLabel="開始日期"
+                  style={{ width: 360 }}
+                  // onChange={setApplicationTime}
+                  id="exampleFormControlInput0"
+                />
+                <p>至</p>
+                <DatePicker
+                  className=" w-100 border border-1 rounded-3"
+                  placeholder="請選擇日期"
+                  insetLabel="結束日期"
+                  style={{ width: 360 }}
+                  // onChange={setApplicationTime}
+                  id="exampleFormControlInput0"
+                />
+              </div>
+            </div>
           </div>
-          <div className="NannyFormOption">
-            <button type="button" className="custom-button">
-              小貓貓
-            </button>
-            <button type="button" className="custom-button">
-              小狗狗
-            </button>
+          <div className="searchNannyButton my-5">
+            <button className>尋找優質保母</button>
           </div>
-          <p className="gender">保母性別</p>
-          <div className="NannyFormOption">
-            <button type="button" className="custom-button">
-              男
-            </button>
-            <button type="button" className="custom-button">
-              女
-            </button>
-            <button type="button" className="custom-button">
-              不限
-            </button>
-          </div>
-          <p className="reservation">預約日期</p>
-          <div className="NannyFormOption">
-            <select className="chooseDate">
-              <option value>2024/11/01</option>
-            </select>
-            <p>至</p>
-            <select className="chooseDate">
-              <option value>2024/11/01</option>
-            </select>
-          </div>
-        </form>
-        <div className="searchNannyButton">
-          <button className>尋找優質保母</button>
         </div>
-      </div>
+      </form>
+
       {/* 優質保母任你選 */}
       <div className="chooseNannyContainer">
         <h2 className="fw-bold fs-2 text-center my-5">優質寵物保母任你選</h2>
         <div>
-          <div className="nannySort">
+          <div className="nannySort p-0">
             <p>排序 : </p>
             <select>
               <option>依距離</option>
@@ -87,8 +180,8 @@ function NannyMain(prop) {
           </div>
         </div>
         <div className="row justify-content-center mx-5">
-          {data.map((cardItem) => (
-            <div className="col-xxxl-3 mb-4">
+          {data.map((cardItem,index) => (
+            <div key={index} className="col-xxxl-3 mb-4">
               <a
                 href={`/nanny/id=${cardItem.user_id}/info`}
                 className="text-decoration-none text-dark"
@@ -237,7 +330,7 @@ function NannyMain(prop) {
           </div>
         </div>
         {/* 第二組圖片和內容 */}
-        <div className="row align-items-center mb-4 mt-5">
+        <div className="row align-items-center my-5">
           <div
             className="col-5"
             style={{ paddingLeft: "20%", textAlign: "left" }}
@@ -281,13 +374,13 @@ function NannyMain(prop) {
         </div>
       </div>
       {/* 毛孩推薦保母 */}
-      <h2
+      {/* <h2
         className="fw-bold fs-2 text-center"
         style={{ margin: "150px 0 50px 0" }}
       >
         毛孩家長推薦NO.1保母
       </h2>
-      <div className="d-flex justify-content-center flex-wrap">
+      <div className="d-flex justify-content-center flex-wrap mb-5">
         <div
           className="card me-3 mb-3"
           style={{ width: "250px", borderRadius: "30px", overflow: "hidden" }}
@@ -413,7 +506,7 @@ function NannyMain(prop) {
             <p className="card-text">$300NTD</p>
           </div>
         </div>
-      </div>
+      </div> */}
     </React.Fragment>
   );
 }

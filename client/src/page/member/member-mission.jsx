@@ -1,8 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import "../../style/member.css";
+import axios from "axios";
 
 const Mission = () => {
+  const [missionData, setMissionData] = useState([]);
+  const [completeData, setCompleteData] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const userId = localStorage.getItem("myUserIDDD");
+      const result = await axios.get(`http://localhost:8000/member/mission/${userId}`);
+      setMissionData(result.data);
+    };
+    getData();
+  }, []);
+
+  useEffect(() => {
+    const getData = async () => {
+      const userId = localStorage.getItem("myUserIDDD");
+      const result = await axios.get(`http://localhost:8000/member/missionComplete/${userId}`);
+      setCompleteData(result.data);
+    };
+    getData();
+  }, []);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString(); // 根據需要調整格式
+  };
+
   const ColoredLine = ({ color }) => (
     <hr
       style={{
@@ -89,19 +116,21 @@ const Mission = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className="ComingDate">2024</td>
-                  <td className="period">13:00</td>
-                  <td className="times">2</td>
-                  <td className="text-center">
-                    <a href="/member/contact-guest">
-                      <i
-                        className="bi bi-chat-dots chat-icon"
-                        style={{ fontSize: " 2rem", color: "black" }}
-                      />
-                    </a>
-                  </td>
-                </tr>
+                {missionData.map((Item) => (
+                  <tr>
+                    <td className="ComingDate">{formatDate(Item.date)}</td>
+                    <td className="period">{Item.time}</td>
+                    <td className="times">{Item.frequency}</td>
+                    <td className="text-center">
+                      <a href="/member/contact-guest">
+                        <i
+                          className="bi bi-chat-dots chat-icon"
+                          style={{ fontSize: " 2rem", color: "black" }}
+                        />
+                      </a>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
             {/* 已完成工作 */}
@@ -116,28 +145,30 @@ const Mission = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className="finishDate">2024</td>
-                  <td className="period">13:00</td>
-                  <td className="times">2</td>
-                  <td className="text-center rating">
-                    <span class="star" data-value="1">
-                      ★
-                    </span>
-                    <span class="star" data-value="2">
-                      ★
-                    </span>
-                    <span class="star" data-value="3">
-                      ★
-                    </span>
-                    <span class="star" data-value="4">
-                      ★
-                    </span>
-                    <span class="star" data-value="5">
-                      ★
-                    </span>
-                  </td>
-                </tr>
+                {completeData.map((Item1) => (
+                  <tr>
+                    <td className="finishDate">{formatDate(Item1.date)}</td>
+                    <td className="period">{Item1.time}</td>
+                    <td className="times">{Item1.frequency}</td>
+                    <td className="text-center rating">
+                      <span class="star" data-value="1">
+                        ★
+                      </span>
+                      <span class="star" data-value="2">
+                        ★
+                      </span>
+                      <span class="star" data-value="3">
+                        ★
+                      </span>
+                      <span class="star" data-value="4">
+                        ★
+                      </span>
+                      <span class="star" data-value="5">
+                        ★
+                      </span>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
             {/* 已完成訂單查詢按鈕 */}

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "../../style/home-new.css";
+import "../../style/loading.css"
 
 function HomeMain() {
   useEffect(() => {
@@ -44,12 +45,12 @@ function HomeMain() {
     //底marquee0 顯示
 
     // 測試滾動放大效果
-    // const myLogo = document.querySelector(".myLogo");
-    // window.addEventListener("scroll", () => {
-    //   const scrollY = window.scrollY; // 當前的滾動位置
-    //   const scale = 1 + scrollY / 1000; // 根據滾動位置計算放大比例
-    //   myLogo.style.transform = `scale(${scale})`; // 設置放大效果
-    // });
+    const myLogo = document.querySelector(".myLogo");
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY; // 當前的滾動位置
+      const scale = 1 + scrollY / 1000; // 根據滾動位置計算放大比例
+      myLogo.style.transform = `scale(${scale})`; // 設置放大效果
+    });
     // 測試滾動放大效果
 
     //滾動 左邊滑出卡片 YES 完成！！
@@ -164,45 +165,45 @@ function HomeMain() {
         </div> */}
         <div
           id="carouselExampleControls"
-          class="carousel slide"
+          className="carousel slide"
           data-bs-ride="carousel"
         >
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="/image/輪播圖1.png" class="d-block w-100" alt="..." style={{height:"120vh"}}/>
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img src="/image/輪播圖1.png" className="d-block w-100" alt="..." style={{height:"120vh"}}/>
             </div>
-            <div class="carousel-item">
-              <img src="/image/輪播圖2.png" class="d-block w-100" alt="..." style={{height:"120vh"}}/>
+            <div className="carousel-item">
+              <img src="/image/輪播圖2.png" className="d-block w-100" alt="..." style={{height:"120vh"}}/>
             </div>
-            <div class="carousel-item">
-              <img src="/image/輪播圖3.png" class="d-block w-100" alt="..." style={{height:"120vh"}}/>
+            <div className="carousel-item">
+              <img src="/image/輪播圖3.png" className="d-block w-100" alt="..." style={{height:"120vh"}}/>
             </div>
           </div>
           <button
-            class="carousel-control-prev"
+            className="carousel-control-prev"
             type="button"
             data-bs-target="#carouselExampleControls"
             data-bs-slide="prev"
           >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
           </button>
           <button
-            class="carousel-control-next"
+            className="carousel-control-next"
             type="button"
             data-bs-target="#carouselExampleControls"
             data-bs-slide="next"
           >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
           </button>
         </div>
         {/* 輪播圖 */}
 
         {/* LOGO 測試區 */}
-        {/* <div className="logoBox text-center d-flex justify-content-center">
+        <div className="logoBox2 text-center d-flex justify-content-center">
           <img className="myLogo" src="/svg/logoGroup.svg" />
-        </div> */}
+        </div>
         {/* LOGO 測試區*/}
 
         {/* 跑馬字串0 底下那條 */}
@@ -235,10 +236,10 @@ function HomeMain() {
         </div>
         {/* 插圖動畫 */}
 
-        <hr color="#ff6144" noshade="noshade" />
+        {/* <hr color="#ff6144" noshade="noshade" /> */}
         {/* 跑馬字串1 大的最上面那條*/}
-        <div className="marquee1-container my-5">
-          <div className="marquee1">
+        <div className="marquee10-container my-5">
+          <div className="marquee10">
             <p>
               We love your pets!! We love your pets!! We love your pets!! We
               love your pets!! We love your pets!! We love your pets!! We love

@@ -1,5 +1,5 @@
-body {
-  margin-top: 200px;
+.bodyMargin {
+  padding-top: 50px;
 }
 
 .carousel-control-prev-icon,
@@ -39,6 +39,7 @@ body {
   border: 1px solid black;
   margin-left: 30px;
   padding-top: 20px;
+  margin-top: 150px;
 }
 
 .leftBar ul a {
@@ -47,10 +48,11 @@ body {
   text-decoration: none;
 }
 
+
+
 .cardbox {
   width: 80%;
-  position: relative;
-  left: 50px;
+  margin-left: 250px;
 }
 
 .cardalign {

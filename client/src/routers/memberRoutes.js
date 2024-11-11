@@ -19,6 +19,10 @@ import MyRequest from "../page/member/member-request.jsx";
 import UserPage from "../page/member/member-userpage.jsx";
 import UserInfo from "../page/member/member-userinfo.jsx";
 import Jobsetting from "../page/member/member-jobsetting.jsx";
+import Address from "../page/member/member-address.jsx";
+import Login from "../page/member/member-login.jsx";
+import Register from "../page/member/member-login-register.jsx";
+import loginSuccess from "../page/member/member-loginSuccess.jsx";
 
 class MemberRoutes extends Component {
   state = {};
@@ -44,6 +48,10 @@ class MemberRoutes extends Component {
         <Route path="/member/userpage" component={UserPage} />
         <Route path="/member/userinfo" component={UserInfo} />
         <Route path="/member/jobsetting" component={Jobsetting} />
+        <Route path="/member/address" component={Address} />
+        <Route path="/Login" component={Login} exact />
+        <Route path="/member/Register" component={Register} exact />
+        <Route path="/member/loginSuccess" component={loginSuccess} exact />
       </Switch>
     );
   }

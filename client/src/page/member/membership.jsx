@@ -4,6 +4,21 @@ import "../../style/member.css";
 
 const MemberMain = () => {
   useEffect(() => {
+    // 設定一個localStorage.getItem("myUserIDDD")獲取user_id
+    console.log('--------Membership---------');
+    let x = localStorage.getItem("myUserIDDD");
+    console.log(x);
+    console.log('--------Membership---------');
+
+    const handleLogout = () => {
+      // 清除 localStorage
+      localStorage.removeItem("myUserIDDD");
+      console.log("已登出，localStorage 已清除");
+
+      // 進行其他登出操作，例如導向登入頁面
+      window.location.href = "/login"; // 根據您的路由調整
+    };
+
     const images = [
       {
         src: "/svg/skatedog.svg",

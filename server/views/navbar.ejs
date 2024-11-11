@@ -1,0 +1,98 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<div class="wrapper">
+    <!-- 側邊欄r -->
+    <!-- 側邊導覽列開始 -->
+    <div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+            <!-- 導覽列 LOGO部分 -->
+            <div class="logo-header" data-background-color="dark">
+                <h2 class="text-white">後臺系統</h2>
+                <div class="nav-toggle">
+                    <button class="btn btn-toggle toggle-sidebar">
+                        <i class="gg-menu-right"></i>
+                    </button>
+                    <button class="btn btn-toggle sidenav-toggler">
+                        <i class="gg-menu-left"></i>
+                    </button>
+                </div>
+                <button class="topbar-toggler more">
+                    <i class="gg-more-vertical-alt"></i>
+                </button>
+            </div>
+            <!-- 導覽列 LOGO部分 -->
+        </div>
+        <!-- 側邊欄項目 -->
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+            <div class="sidebar-content">
+                <ul class="nav nav-secondary">
+                    <li class="nav-item active">
+                        <a href="/admin/index">
+                            <i class="bi bi-house-fill"></i>
+                            <p>主頁
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="manage">
+                            <i class="bi bi-wrench-adjustable-circle text-white" ></i>
+                            <p>管理上架</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a data-bs-toggle="collapse" href="#forms">
+                            <i class="bi bi-kanban text-white"></i>
+                            <p>資訊</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="forms">
+                            <ul class="nav nav-collapse text-white">
+                                <li>
+                                    <a href="userTable">
+                                        <span class="sub-item">客戶資料</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="orderTable">
+                                        <span class="sub-item">訂單資訊</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="productTable">
+                                        <span class="sub-item">產品資訊</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="manage">
+                            <i class="bi bi-check-square text-white"></i>
+                            <p>領養資訊確認</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 側邊欄項目 -->
+    </div>
+    <!-- 側邊欄 -->
+
+    <div class="main-panel">
+        <div class="main-header">
+            <!-- 上方搜尋欄  -->
+            <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
+                <div class="container-fluid">
+                        <a class="nav-item topbar-user dropdown hidden-caret">
+                            <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#"
+                                aria-expanded="false">
+                                <span class="profile-username">
+                                    <span class="op-7">Hi,</span>
+                                    <span class="fw-bold">admin</span>
+                                </span>
+                            </a>
+                        </a>
+                    </ul>
+                </div>
+            </nav>
+            <!-- 上方搜尋欄 -->
+        </div>

@@ -59,18 +59,18 @@ function AdoptInfo(prop) {
       <a href="" className="backPage">
         <img src="./img/arrow.png" className="mx-5" alt="回上一頁"></img>
       </a>
-      <div className="d-flex col-12">
+      <div className="d-flex col-12 mb-5">
         <div className="petPic col-8 ">
           <img src={data.album_file} alt="123"></img>
         </div>
         <div>
-          <div className="col-4 mt-5">
-            <p>{data.animal_variety}</p>
-            <p>{(data.animal_sex = "F" ? "女" : "男")}</p>
-            <p>{data.animal_color}</p>
-            <p>{data.animal_bodytype}</p>
-            <p>{data.animal_place}</p>
-            <p>{data.shelter_tel}</p>
+          <div className="col-4 mt-5 w-100">
+            <p>品種：{data.animal_variety}</p>
+            <p>性別：{(data.animal_sex = "F" ? "母" : "公")}</p>
+            <p>毛色：{data.animal_color}</p>
+            <p>體型：{data.animal_bodytype}</p>
+            <p>所在機構位置：{data.animal_place}</p>
+            <p>所在機構電話：{data.shelter_tel}</p>
           </div>
           <div className="willingness">
             <a

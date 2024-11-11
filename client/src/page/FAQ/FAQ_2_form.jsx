@@ -70,7 +70,7 @@ function FAQFrom(prop) {
         <div className="w-50 m-auto px-3 py-5 border border-3 rounded-4">
           <div className="mb-3">
             <label
-              htmlFor="exampleFormControlInput1"
+              htmlFor="exampleFormControlInput0"
               className="form-label ps-2"
             >
               申請日期
@@ -82,6 +82,7 @@ function FAQFrom(prop) {
                 insetLabel="申請日期"
                 style={{ width: 360 }}
                 onChange={setApplicationTime}
+                id="exampleFormControlInput0"
               />
             </div>
           </div>

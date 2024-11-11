@@ -271,12 +271,12 @@ function AdoptMain() {
                   style={{ height: "340px", width: "400px" }}
                 ></img>
                 <div className="row">
-                  <div className="col-6">{adoptItem.animal_variety}</div>
-                  <div className="col-6">{adoptItem.animal_color}</div>
+                  <div className="col-6">品種：{adoptItem.animal_variety}</div>
+                  <div className="col-6">毛色：{adoptItem.animal_color}</div>
                 </div>
-                <div>{adoptItem.animal_sex === "F" ? "女" : "男"}</div>
+                <div>性別：{adoptItem.animal_sex === "F" ? "母" : "公"}</div>
                 <div className="d-flex justify-content-between">
-                  <div className="">{adoptItem.animal_bodytype}</div>
+                  <div className="">體型：{adoptItem.animal_bodytype}</div>
                   <a
                     href={`/adopt/info/item=${adoptItem.list_id}`}
                     className="btn btn-warning"

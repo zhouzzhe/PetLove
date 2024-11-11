@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
 import "../../style/member.css";
+import axios from "axios";
 
 const JoinUs = () => {
   useEffect(() => {
@@ -125,9 +126,6 @@ const JoinUs = () => {
           <br />
           <br />
           <span id="joinpageBtn">
-            <a href="/member/become-walker" className="btn" id="joinWalk">
-              成為代遛夥伴
-            </a>
             <a href="/member/become-nanny" className="btn" id="joinNanny">
               成為保姆夥伴
             </a>
