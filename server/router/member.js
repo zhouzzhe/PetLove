@@ -39,7 +39,7 @@ function isAuthenticated(req, res, next) {
 //獲取用戶資料
 const getUserData = (req, res, next) => {
   pool.query(
-    "SELECT * FROM userlogin WHERE user_id = ?",
+    "SELECT * FROM user_login WHERE user_id = ?",
     [req.session.userId],
     (err, results) => {
       if (err) {
@@ -53,7 +53,7 @@ const getUserData = (req, res, next) => {
 
 router.get("/api/user/:id", (req, res) => {
   const userId = req.params.id; // 獲取 URL 中的 user_id
-  let sql = `SELECT * FROM userlogin WHERE user_id = ?`;
+  let sql = `SELECT * FROM user_login WHERE user_id = ?`;
   db.exc(sql, [userId], function (results, filed) {
     if (results) {
       res.send(results);
@@ -66,7 +66,7 @@ router.get("/member", isAuthenticated, (req, res) => {
   console.log("收到的 user_id:", userId); // 輸出收到的 user_id
 
   db.exc(
-    "SELECT user_name FROM userlogin WHERE user_id = ?",
+    "SELECT user_name FROM user_login WHERE user_id = ?",
     [userId],
     (err, results) => {
       if (err) {
@@ -97,7 +97,7 @@ router.get("/", function (req, res) {
 router.post("/login", (req, res) => {
   const { user_mail, user_password } = req.body;
 
-  const sql = "SELECT * FROM userlogin WHERE user_mail = ?";
+  const sql = "SELECT * FROM user_login WHERE user_mail = ?";
   db.exc(sql, [user_mail], (mydata, errORfields) => {
     if (mydata == null) {
       console.log("--------資料庫錯誤:--------", errORfields);
@@ -140,7 +140,7 @@ router.post("/Register", (req, res) => {
 
   // 構建 SQL 查詢
   const sql =
-    "INSERT INTO userlogin (user_name, user_mail, user_password) VALUES ( ?, ?, ?)";
+    "INSERT INTO user_login (user_name, user_mail, user_password) VALUES ( ?, ?, ?)";
 
   // 使用資料庫連接池插入資料
   db.exc(sql, [name, email, password], (error, results) => {
@@ -156,7 +156,7 @@ router.post("/Register", (req, res) => {
 
 router.get("/userpage-userinfo/:id", (req, res) => {
   const userId = req.params.id; // 獲取 URL 中的 user_id
-  let sql = `SELECT * FROM userlogin WHERE user_id = ?`;
+  let sql = `SELECT * FROM user_login WHERE user_id = ?`;
   db.exc(sql, [userId], function (results, field) {
     if (results) {
       res.send(results);
@@ -325,7 +325,7 @@ router.get("/adoption/:id", (req, res) => {
 
 router.get("/userinfo/:id", (req, res) => {
   const userId = req.params.id; // 獲取 URL 中的 user_id
-  let sql = "SELECT * FROM userlogin WHERE user_id = ?";
+  let sql = "SELECT * FROM user_login WHERE user_id = ?";
   db.exc(sql, [userId], function (results, filed) {
     if (results) {
       res.send(results);
@@ -339,7 +339,7 @@ router.post("/userinfo/update/:id", (req, res) => {
   const { user_name, user_phone, user_mail } = req.body; // 从请求体获取新信息
 
   // 使用 UPDATE 语句更新用户信息
-  let sql = "UPDATE userlogin SET user_name = ?, user_phone = ?, user_mail = ? WHERE user_id = ?";
+  let sql = "UPDATE user_login SET user_name = ?, user_phone = ?, user_mail = ? WHERE user_id = ?";
   let data = [
     req.body.user_name,
     req.body.user_phone,
@@ -391,7 +391,7 @@ router.post("/jobsetting/update/:id", (req, res) => {
 router.post("/password/update/:id", (req, res) => {
   const userId = req.params.id; // 獲取 URL 中的 user_id
   const { user_password } = req.body;
-  let sql = "UPDATE userlogin SET user_password = ? WHERE user_id = ?";
+  let sql = "UPDATE user_login SET user_password = ? WHERE user_id = ?";
   let data = [
     req.body.user_password
   ]
@@ -408,7 +408,7 @@ router.post("/address/:id", (req, res) => {
   const { recipient_address, recipient_phone, recipient_name } = req.body;
 
   // 在插入 recipient 前先檢查 user_id 是否在 userlogin 表中存在
-  let checkUserSql = "SELECT * FROM userlogin WHERE user_id = ?";
+  let checkUserSql = "SELECT * FROM user_login WHERE user_id = ?";
 
   db.exc(checkUserSql, [userId], function (results, fields) {
     if (results.length === 0) {
@@ -432,7 +432,7 @@ router.post("/address/:id", (req, res) => {
 
 router.get("/userinfo/:id", (req, res) => {
   const userId = req.params.id; // 獲取 URL 中的 user_id
-  let sql = "SELECT * FROM userlogin WHERE user_id = ?";
+  let sql = "SELECT * FROM user_login WHERE user_id = ?";
   db.exc(sql, [userId], function (results, filed) {
     if (results) {
       res.send(results);
