@@ -1,0 +1,21 @@
+1.執行nodemon server.js(有引用db和app)
+
+npm install ip
+npm install -g nodemon
+npm init -f
+npm install express
+npm install ejs
+npm install multer
+npm install express-session
+
+npm install react-scripts
+npm install animate.css
+npm install bootstrap-icons
+npm install babel-preset-react-app
+
+npm install create-react-app -g
+create-react-app hello
+npm install --save-dev @babel/plugin-proposal-private-property-in-object
+npm install bootstrap@4.1.1
+npm install axios
+
